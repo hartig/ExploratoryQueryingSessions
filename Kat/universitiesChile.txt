@@ -20,6 +20,7 @@ query 1:
 # Labels for those universities in Spanish
 # People educated at those universities
 # Timestamp in log: 2017-06-14 15:18:37 +00:00
+```
 SELECT *
 WHERE {  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q3918> .
        ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
@@ -27,7 +28,7 @@ WHERE {  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.
        ?var3  <http://www.wikidata.org/prop/direct/P69>  ?var1 .  
        ?var3  <http://www.w3.org/2000/01/rdf-schema#label>  ?var4 .
 FILTER (  ( (  LANG (  ?var2  )  =  "es" ) ) ) .}
-
+```
 query 2:
 # Select universities with a Spanish label 
 # Universities in the country of Chile
