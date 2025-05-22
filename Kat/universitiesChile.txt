@@ -5,6 +5,9 @@ shared that didn't have session ids) timestamp in .json file is: 2017-06-14 15:1
 
 number of queries: 3
 
+query evolution description:
+After the initial query, the user replaced one of the triple patterns by another one to capture the changed query intent (from finding people educated at Chilean universities to finding the locations of these universities). Thereafter, the user modified the SELECT clause from projecting one variable (the one for the university names) to projecting all variables.
+
 user story:
 This user started from a query asking for universities in Chile and people who
 were educated there.
