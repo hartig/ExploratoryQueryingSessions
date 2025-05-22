@@ -1,6 +1,6 @@
 # Universities in Chile
 ID of first query in session: (this session came from the .json file Wim and Janik
-shared that didn't have session ids- timestamp is: 2017-06-14 15:18:37 +00:00
+shared that didn't have session ids) timestamp in .json file is: 2017-06-14 15:18:37 +00:00
 
 
 number of queries: 3
