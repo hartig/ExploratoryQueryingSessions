@@ -6,6 +6,8 @@ ID of first query in session:
 
 number of queries:
 
+query evolution description:
+
 user story:
 
 query 1:
