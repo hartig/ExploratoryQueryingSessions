@@ -1,0 +1,55 @@
+# Universities in Chile
+ID of first query in session: (this session came from the .json file Wim and Janik
+shared that didn't have session ids- timestamp is: 2017-06-14 15:18:37 +00:00
+
+
+number of queries: 3
+
+user story:
+This user started from a query asking for universities in Chile and people who
+were educated there.
+Then they changed the query to ask for universities in Chile and coordinate
+location, but did not include the coordinate location in the select clause, so
+the coordinates did not appear in the results.
+Then they asked for SELECT * and got the universities and their coordinates in
+the third query.
+
+
+query 1:
+# Instances of universities in the country Chile 
+# Labels for those universities in Spanish
+# People educated at those universities
+# Timestamp in log: 2017-06-14 15:18:37 +00:00
+SELECT *
+WHERE {  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q3918> .
+       ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
+       ?var1  <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q298> .
+       ?var3  <http://www.wikidata.org/prop/direct/P69>  ?var1 .  
+       ?var3  <http://www.w3.org/2000/01/rdf-schema#label>  ?var4 .
+FILTER (  ( (  LANG (  ?var2  )  =  "es" ) ) ) .}
+
+query 2:
+# Select universities with a Spanish label 
+# Universities in the country of Chile
+# Coordinate location of the universities
+# Timestamp from log: 2017-06-14 15:18:39 +00:00
+SELECT ?var1 
+WHERE {  ?var2  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q3918> .  
+       ?var2  <http://www.w3.org/2000/01/rdf-schema#label>  ?var1 .  
+       ?var2  <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q298> .  
+       ?var2  <http://www.wikidata.org/prop/direct/P625>  ?var3 . 
+       FILTER (  ( (  LANG (  ?var1  )  =  "es" ) ) ) .}
+LIMIT 100
+
+query 3:
+# Select * where items are instance of university
+# the universities are in the country of Chile
+# the universities have a coordinate location
+# Timestamp from log: 2017-06-14 15:18:49 +00:00
+SELECT *
+WHERE {  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q3918> .  
+       ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  
+              ?var2 .  ?var1  <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q298> .  
+       ?var1  <http://www.wikidata.org/prop/direct/P625>  ?var3 . 
+       FILTER (  ( (  LANG (  ?var2  )  =  "es" ) ) ) .}
+LIMIT 100
