@@ -1,6 +1,6 @@
 # Exploratory Querying Sessions
-This repository contains a collection of exploratory querying sessions discovered in Wikidata query logs. Please submit one file per session. Our goal is for each of us to contribute 4 sessions.
-Please consider using this structure for your session files. [Sample session file](https://github.com/hartig/ExploratoryQueryingSessions/blob/main/Kat/universitiesChile.txt) .
+This repository contains a collection of exploratory querying sessions discovered in Wikidata query logs. Each of us has our own directory in this repo. There you will find a chunk of the log. We will each work with separate chunks of the log to find sessions that exemplify exploratory querying. Once you have found a session that shows the user doing exploratory querying, please use this template to describe the session. Please submit one file per session. Please add the files to the directory in this repo with your name. Our goal is for each of us to contribute descriptions of 4 sessions using this template.
+Please use this template to describe your session files. Here is a [Sample session file](https://github.com/hartig/ExploratoryQueryingSessions/blob/main/Kat/universitiesChile.txt) for your reference.
 
 ID of first query in session: 
 
