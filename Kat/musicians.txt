@@ -1,0 +1,43 @@
+# musicians
+ID of first query in session: 655337392
+
+number of queries: 2
+
+query evolution description:
+In the first query the URI for 'human' was
+missing the 'Q'. Corrected URI in second query.
+
+user story:
+There were 4 suggested queries in this session but the first two about
+musicians are
+independent of the second two about video games.
+In this session the user forgot the Q in the Qid for 'human'. They corrected
+this in the second query.
+
+query 1:
+# Items that are instance of human and labels in English (URI incorrect)
+# Humans who have the occupation musician
+
+SELECT ?var1  ?var1Label 
+WHERE {
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/5> .
+  ?var1  <http://www.wikidata.org/prop/direct/P106>  <http://www.wikidata.org/entity/Q639669> .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+
+query 2:
+# Items that are instance of human and labels in English
+# Humans who have the occupation musician
+
+SELECT ?var1  ?var1Label 
+WHERE {
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q5> .
+  ?var1  <http://www.wikidata.org/prop/direct/P106>  <http://www.wikidata.org/entity/Q639669> .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+
+
