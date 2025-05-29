@@ -9,7 +9,7 @@ query evolution description: The user successively renames variables or replaces
 user story:
 The user starts by searching for the properties (and the corresponding objects) that are associated with a specific Swiss railroad station, but not with a specific other station.
 The user then only tries to select the Wikidata properties. To do this, the user first tries to rename a variable, but ultimately replaces some variables with blank nodes. At the same time, only distinct properties are searched for.
-In the last query, one of the railroad stations is replaced by another.
+In the last query, the two stations are swapped with each other.
 
 
 query 1:
