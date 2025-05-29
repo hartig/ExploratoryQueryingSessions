@@ -1,0 +1,84 @@
+# session 3: sculptors
+
+ID of first query in session: 694900132
+
+number of queries: 4
+
+query evolution description: The evaluation of the query consists of adding further triple patterns (one is optional) and increasing the limit.
+
+user story:
+The user starts by searching for sculptors and, if available, an image of those.
+It is then additionally required that the sculptors are Swedish citizens.
+After this, the limit is increased from 100 to 100000.
+In the last query, the WikiTree person ID of a sculptor, provided it is available, is also included in the result.
+
+
+
+query 1:
+
+SELECT ?var1  ?var2Label  ?var3
+WHERE {
+  ?var1  wdt:P106  wd:Q1281618 .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "sv".
+    ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  }
+ OPTIONAL {
+  ?var1  wdt:P18  ?var3 .
+ }
+}
+LIMIT 100
+
+
+query 2:
+
+SELECT ?var1  ?var2Label  ?var3
+WHERE {
+  ?var1  wdt:P106  wd:Q1281618 .
+  ?var1  wdt:P27  wd:Q34 .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "sv".
+    ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  }
+ OPTIONAL {
+  ?var1  wdt:P18  ?var3 .
+ }
+}
+LIMIT 100
+
+
+query 3:
+
+SELECT ?var1  ?var2Label  ?var3
+WHERE {
+  ?var1  wdt:P106  wd:Q1281618 .
+  ?var1  wdt:P27  wd:Q34 .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "sv".
+    ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  }
+ OPTIONAL {
+  ?var1  wdt:P18  ?var3 .
+ }
+}
+LIMIT 100000
+
+
+query 4:
+
+SELECT ?var1  ?var2Label  ?var3  ?var4
+WHERE {
+  ?var1  wdt:P106  wd:Q1281618 .
+  ?var1  wdt:P27  wd:Q34 .
+ OPTIONAL {
+  ?var1  wdt:P2949  ?var4 .
+ }
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "sv".
+    ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  }
+ OPTIONAL {
+  ?var1  wdt:P18  ?var3 .
+ }
+}
+LIMIT 100000

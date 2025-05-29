@@ -1,0 +1,56 @@
+# session 1: Science Fiction Writer
+
+ID of first query in session: 911120688
+
+number of queries: 3
+
+query evolution description: The query becomes more specific step by step by adding triple patterns and a filter.
+
+user story:
+In the initial query, the user is asked about science fiction authors and their place of birth.
+The query is then restricted so that only authors born in the United Kingdom are included.
+The last query then additionally requires that the authors were not born before 1900.
+In general, the query results are limited to 100 elements. However, the last query returns no results because an invalid date format is used.
+
+query 1:
+
+SELECT ?var1Label  ?var2Label
+WHERE {
+  ?var1  <http://www.wikidata.org/prop/direct/P106>  <http://www.wikidata.org/entity/Q18844224> .
+  ?var1  <http://www.wikidata.org/prop/direct/P19>  ?var2 .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,nl,en".
+  }
+}
+LIMIT 100
+
+
+query 2:
+
+SELECT ?var1Label  ?var2Label
+WHERE {
+  ?var1  <http://www.wikidata.org/prop/direct/P106>  <http://www.wikidata.org/entity/Q18844224> .
+  ?var1  <http://www.wikidata.org/prop/direct/P19>  ?var2 .
+  ?var2  <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q145> .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,nl,en".
+  }
+}
+LIMIT 100
+
+
+query 3:
+
+SELECT ?var1Label  ?var2Label  ?var3
+WHERE {
+  ?var1  <http://www.wikidata.org/prop/direct/P106>  <http://www.wikidata.org/entity/Q18844224> .
+  ?var1  <http://www.wikidata.org/prop/direct/P19>  ?var2 .
+  ?var2  <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q145> .
+  ?var1  <http://www.wikidata.org/prop/direct/P569>  ?var3 .
+ FILTER (  ( (  ?var3  >=  "01-01-1900" ) )
+) .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,nl,en".
+  }
+}
+LIMIT 100

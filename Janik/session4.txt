@@ -1,0 +1,56 @@
+# session 4: swiss train stations
+
+ID of first query in session: 706207299
+
+number of queries: 4
+
+query evolution description: The user successively renames variables or replaces them with blank nodes. An IRI is replaced once and after the second query "DiSTINCT" is added.
+
+user story:
+The user starts by searching for the properties (and the corresponding objects) that are associated with a specific Swiss railroad station, but not with a specific other station.
+The user then only tries to select the Wikidata properties. To do this, the user first tries to rename a variable, but ultimately replaces some variables with blank nodes. At the same time, only distinct properties are searched for.
+In the last query, one of the railroad stations is replaced by another.
+
+
+query 1:
+
+SELECT *
+WHERE {
+  wd:Q30089185  ?var1  ?var2 .
+  MINUS   {
+    wd:Q224494  ?var1  ?var2 .
+  }
+}
+
+
+query 2:
+
+SELECT *
+WHERE {
+  wd:Q30089185  ?var1  ?var2 .
+  MINUS   {
+    wd:Q224494  ?var1  ?var3 .
+  }
+}
+
+
+query 3:
+
+SELECT DISTINCT *
+WHERE {
+  wd:Q30089185  ?var1  [] .
+  MINUS   {
+    wd:Q224494  ?var1  [] .
+  }
+}
+
+
+query 4:
+
+SELECT DISTINCT *
+WHERE {
+  wd:Q224494  ?var1  [] .
+  MINUS   {
+    wd:Q30089185  ?var1  [] .
+  }
+}
