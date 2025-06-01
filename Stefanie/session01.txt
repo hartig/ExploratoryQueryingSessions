@@ -1,0 +1,293 @@
+ID of first query in session: 409098207
+
+number of queries: 7
+
+query evolution description:
+
+The query is essentially the same throughout the session, but with minor modifications. 
+
+It extracts metadata about programming languages from Wikidata, including their name, superclass, implementations, and licenses.
+
+
+
+
+
+user story:
+
+The initial query is already quite big.
+
+It is simplified (dropping the ORDER BY), the new version is shorter and leaner.
+Then the ORDER BY is re-added. The WHERE-condition is refined,
+from "free software" to "software". Later, ther ORDER BY is again dropped and re-added.
+Finally, the order of predicates on P275 and P306 is swapped.
+
+query 1:
+
+# This SPARQL query is extracting metadata about programming languages from Wikidata, 
+# including their name, superclass, implementations, and licenses.
+
+SELECT DISTINCT ?var1 (  SAMPLE ( COALESCE (  ?var2Label , ?var3Label  )  ) AS  ?var4  )(  SAMPLE ( COALESCE (  ?var5Label , ?var6Label  )  ) AS  ?var7  )(  GROUP_CONCAT (  DISTINCT  ?var8Label ; SEPARATOR =  ", " )  AS  ?var9  )(  GROUP_CONCAT (  DISTINCT  ?var10Label ; SEPARATOR =  ", " )  AS  ?var11  )
+WHERE {
+  ?var1 ( <http://www.wikidata.org/prop/P31> / <http://www.wikidata.org/prop/statement/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q341> .
+  ?var1 ( <http://www.wikidata.org/prop/P31> / <http://www.wikidata.org/prop/statement/P31> ) ?var7 .
+ OPTIONAL {
+  ?var7  <http://www.w3.org/2000/01/rdf-schema#label>  ?var5Label .
+ FILTER (  ( (  LANG (  ?var5Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var7  <http://www.w3.org/2000/01/rdf-schema#label>  ?var6Label .
+ }
+ OPTIONAL {
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+ FILTER (  ( (  LANG (  ?var2Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var3Label .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P306>  ?var12 .
+  ?var12  <http://www.w3.org/2000/01/rdf-schema#label>  ?var8Label .
+ FILTER (  ( (  LANG (  ?var8Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P275>  ?var13 .
+  ?var13  <http://www.w3.org/2000/01/rdf-schema#label>  ?var10Label .
+ FILTER (  ( (  LANG (  ?var10Label  )  =  "en" ) ) 
+) .
+ }
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+GROUP BY  ?var1 
+ORDER BY ASC( ?var4 )
+
+
+query 2:
+
+# The new version is cleaner and shorter, but loses robustness in edge cases.
+# In particular, the ORDER BY is dropped.
+
+SELECT DISTINCT ?var1 (  SAMPLE ( COALESCE (  ?var2Label , ?var3Label  )  ) AS  ?var4  )(  GROUP_CONCAT (  DISTINCT  ?var5Label ; SEPARATOR =  ", " )  AS  ?var6  )(  GROUP_CONCAT (  DISTINCT  ?var7Label ; SEPARATOR =  ", " )  AS  ?var8  )(  GROUP_CONCAT (  DISTINCT  ?var9Label ; SEPARATOR =  ", " )  AS  ?var10  )
+WHERE {
+  ?var1 ( <http://www.wikidata.org/prop/P31> / <http://www.wikidata.org/prop/statement/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q341> .
+  ?var1 ( <http://www.wikidata.org/prop/P31> / <http://www.wikidata.org/prop/statement/P31> ) ?var11 .
+ OPTIONAL {
+  ?var11  <http://www.w3.org/2000/01/rdf-schema#label>  ?var5Label .
+ FILTER (  ( (  LANG (  ?var5Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+ FILTER (  ( (  LANG (  ?var2Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var3Label .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P306>  ?var12 .
+  ?var12  <http://www.w3.org/2000/01/rdf-schema#label>  ?var7Label .
+ FILTER (  ( (  LANG (  ?var7Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P275>  ?var13 .
+  ?var13  <http://www.w3.org/2000/01/rdf-schema#label>  ?var9Label .
+ FILTER (  ( (  LANG (  ?var9Label  )  =  "en" ) ) 
+) .
+ }
+}
+GROUP BY  ?var1 
+
+
+query 3:
+
+# Again adding ORDER BY.
+
+SELECT DISTINCT ?var1 (  SAMPLE ( COALESCE (  ?var2Label , ?var3Label  )  ) AS  ?var4  )(  GROUP_CONCAT (  DISTINCT  ?var5Label ; SEPARATOR =  ", " )  AS  ?var6  )(  GROUP_CONCAT (  DISTINCT  ?var7Label ; SEPARATOR =  ", " )  AS  ?var8  )(  GROUP_CONCAT (  DISTINCT  ?var9Label ; SEPARATOR =  ", " )  AS  ?var10  )
+WHERE {
+  ?var1 ( <http://www.wikidata.org/prop/P31> / <http://www.wikidata.org/prop/statement/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q341> .
+  ?var1 ( <http://www.wikidata.org/prop/P31> / <http://www.wikidata.org/prop/statement/P31> ) ?var11 .
+ OPTIONAL {
+  ?var11  <http://www.w3.org/2000/01/rdf-schema#label>  ?var5Label .
+ FILTER (  ( (  LANG (  ?var5Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+ FILTER (  ( (  LANG (  ?var2Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var3Label .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P306>  ?var12 .
+  ?var12  <http://www.w3.org/2000/01/rdf-schema#label>  ?var7Label .
+ FILTER (  ( (  LANG (  ?var7Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P275>  ?var13 .
+  ?var13  <http://www.w3.org/2000/01/rdf-schema#label>  ?var9Label .
+ FILTER (  ( (  LANG (  ?var9Label  )  =  "en" ) ) 
+) .
+ }
+}
+GROUP BY  ?var1 
+ORDER BY ASC( ?var4 )
+
+
+query 4:
+
+# Changes WHERE-condition from "free software" to "software", i.e. https://www.wikidata.org/wiki/Q7397.
+
+SELECT DISTINCT ?var1 (  SAMPLE ( COALESCE (  ?var2Label , ?var3Label  )  ) AS  ?var4  )(  GROUP_CONCAT (  DISTINCT  ?var5Label ; SEPARATOR =  ", " )  AS  ?var6  )(  GROUP_CONCAT (  DISTINCT  ?var7Label ; SEPARATOR =  ", " )  AS  ?var8  )(  GROUP_CONCAT (  DISTINCT  ?var9Label ; SEPARATOR =  ", " )  AS  ?var10  )
+WHERE {
+  ?var1 ( <http://www.wikidata.org/prop/P31> / <http://www.wikidata.org/prop/statement/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q7397> .
+  ?var1 ( <http://www.wikidata.org/prop/P31> / <http://www.wikidata.org/prop/statement/P31> ) ?var11 .
+ OPTIONAL {
+  ?var11  <http://www.w3.org/2000/01/rdf-schema#label>  ?var5Label .
+ FILTER (  ( (  LANG (  ?var5Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+ FILTER (  ( (  LANG (  ?var2Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var3Label .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P306>  ?var12 .
+  ?var12  <http://www.w3.org/2000/01/rdf-schema#label>  ?var7Label .
+ FILTER (  ( (  LANG (  ?var7Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P275>  ?var13 .
+  ?var13  <http://www.w3.org/2000/01/rdf-schema#label>  ?var9Label .
+ FILTER (  ( (  LANG (  ?var9Label  )  =  "en" ) ) 
+) .
+ }
+}
+GROUP BY  ?var1 
+ORDER BY ASC( ?var4 )
+
+
+query 5:
+
+# Now dropping the ORDER BY
+
+SELECT DISTINCT ?var1 (  SAMPLE ( COALESCE (  ?var2Label , ?var3Label  )  ) AS  ?var4  )(  GROUP_CONCAT (  DISTINCT  ?var5Label ; SEPARATOR =  ", " )  AS  ?var6  )(  GROUP_CONCAT (  DISTINCT  ?var7Label ; SEPARATOR =  ", " )  AS  ?var8  )(  GROUP_CONCAT (  DISTINCT  ?var9Label ; SEPARATOR =  ", " )  AS  ?var10  )
+WHERE {
+  ?var1 ( <http://www.wikidata.org/prop/P31> / <http://www.wikidata.org/prop/statement/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q7397> .
+  ?var1 ( <http://www.wikidata.org/prop/P31> / <http://www.wikidata.org/prop/statement/P31> ) ?var11 .
+ OPTIONAL {
+  ?var11  <http://www.w3.org/2000/01/rdf-schema#label>  ?var5Label .
+ FILTER (  ( (  LANG (  ?var5Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+ FILTER (  ( (  LANG (  ?var2Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var3Label .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P306>  ?var12 .
+  ?var12  <http://www.w3.org/2000/01/rdf-schema#label>  ?var7Label .
+ FILTER (  ( (  LANG (  ?var7Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P275>  ?var13 .
+  ?var13  <http://www.w3.org/2000/01/rdf-schema#label>  ?var9Label .
+ FILTER (  ( (  LANG (  ?var9Label  )  =  "en" ) ) 
+) .
+ }
+}
+GROUP BY  ?var1 
+
+
+query 6:
+
+# Re-adding ORDER-BY, asking about "free software" again.
+
+SELECT DISTINCT ?var1 (  SAMPLE ( COALESCE (  ?var2Label , ?var3Label  )  ) AS  ?var4  )(  GROUP_CONCAT (  DISTINCT  ?var5Label ; SEPARATOR =  ", " )  AS  ?var6  )(  GROUP_CONCAT (  DISTINCT  ?var7Label ; SEPARATOR =  ", " )  AS  ?var8  )(  GROUP_CONCAT (  DISTINCT  ?var9Label ; SEPARATOR =  ", " )  AS  ?var10  )
+WHERE {
+  ?var1 ( <http://www.wikidata.org/prop/P31> / <http://www.wikidata.org/prop/statement/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q341> .
+  ?var1 ( <http://www.wikidata.org/prop/P31> / <http://www.wikidata.org/prop/statement/P31> ) ?var11 .
+ OPTIONAL {
+  ?var11  <http://www.w3.org/2000/01/rdf-schema#label>  ?var5Label .
+ FILTER (  ( (  LANG (  ?var5Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+ FILTER (  ( (  LANG (  ?var2Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var3Label .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P306>  ?var12 .
+  ?var12  <http://www.w3.org/2000/01/rdf-schema#label>  ?var7Label .
+ FILTER (  ( (  LANG (  ?var7Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P275>  ?var13 .
+  ?var13  <http://www.w3.org/2000/01/rdf-schema#label>  ?var9Label .
+ FILTER (  ( (  LANG (  ?var9Label  )  =  "en" ) ) 
+) .
+ }
+}
+GROUP BY  ?var1 
+ORDER BY ASC( ?var4 )
+
+
+query 7:
+
+# Swaps the order of P275 and P306 compared to previous queries.
+
+SELECT DISTINCT ?var1 (  SAMPLE ( COALESCE (  ?var2Label , ?var3Label  )  ) AS  ?var4  )(  GROUP_CONCAT (  DISTINCT  ?var5Label ; SEPARATOR =  ", " )  AS  ?var6  )(  GROUP_CONCAT (  DISTINCT  ?var7Label ; SEPARATOR =  ", " )  AS  ?var8  )(  GROUP_CONCAT (  DISTINCT  ?var9Label ; SEPARATOR =  ", " )  AS  ?var10  )
+WHERE {
+  ?var1 ( <http://www.wikidata.org/prop/P31> / <http://www.wikidata.org/prop/statement/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q341> .
+  ?var1 ( <http://www.wikidata.org/prop/P31> / <http://www.wikidata.org/prop/statement/P31> ) ?var11 .
+ OPTIONAL {
+  ?var11  <http://www.w3.org/2000/01/rdf-schema#label>  ?var5Label .
+ FILTER (  ( (  LANG (  ?var5Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+ FILTER (  ( (  LANG (  ?var2Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var3Label .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P275>  ?var12 .
+  ?var12  <http://www.w3.org/2000/01/rdf-schema#label>  ?var7Label .
+ FILTER (  ( (  LANG (  ?var7Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P306>  ?var13 .
+  ?var13  <http://www.w3.org/2000/01/rdf-schema#label>  ?var9Label .
+ FILTER (  ( (  LANG (  ?var9Label  )  =  "en" ) ) 
+) .
+ }
+}
+GROUP BY  ?var1 
+ORDER BY ASC( ?var4 )
