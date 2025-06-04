@@ -7,6 +7,9 @@ query evolution description:
 The initial query is a complex query with aggregations, optionals, filters, group by, and returns nothing. Iteratively, a line of the query is removed until it returns an answer. Then, a condition is added again, aggregation is dropped, and the session ends.
 
 user story:
+The user wants to find information about Spanish or Mexican cuisine. The sequence starts with an overly constrained complex query (asking for instances of Spanish cuisine whose gender is female and ...), from which conditions are subsequently removed until the query returns something. Then, the focus is switched from Spanish cuisine to mexican food. After removing some more side-conditions, the last query in the sequence returns 50 results that are subclass of Mexican food.
+
+query sequence: 
 Query 1: The user searches for instances of (P31) Spanish cuisine (Q622512) which is an instance of food, whose gender is female, together with other side conditions, like date of birth. The query seems unsensible. (No result.)
 
 Query 2: The condition of female gender is dropped. The query still seems unsensible, because instances of Spanish cuisine don't have a birthdate. (No result.)
