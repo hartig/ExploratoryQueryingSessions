@@ -1,0 +1,363 @@
+
+Starting from ID: 449003100
+A sequence of 10 queries
+
+Summary:
+This series of queries systematically explores how the name “Wien” (Vienna)—as a German-language label or alias—is used across Wikidata entities categorized as places, organizations, or events.
+
+
+ID: 449003100
+This SPARQL query extracts entities labeled “Wien” (Vienna), identifying relevant places (PLACE), organizations (ORG), and events (EVENT), and investigates related Wikipedia articles, aliases, and usage frequency.
+
+ID: 449108444
+A query to retrieve a list of PLACE, ORG, or EVENT entities that have a label or alias of “Wien”@de, along with their occurrence count.
+
+ID: 449319860
+A query to extract Wikidata entities classified as PLACE, ORG, or EVENT with a label or alias of “Wien”@de, including their altLabels (in German and English) and the number of Wikipedia article references per language.
+
+ID: 449384967
+A query to search for Wikidata entities labeled or aliased as “Wien” (in German) and classified as cities, organizations, or events, and to collect associated information such as type, aliases, and Wikipedia articles.
+
+ID: 792022759
+A query to find Wikidata entities labeled or aliased as “Wien” (in German) that are categorized as “place,” “organization,” or “event,” and to identify associated German Wikipedia articles.
+
+ID: 792139171
+A query to retrieve Wikidata entities labeled or aliased as “Wien” (in German) and categorized as PLACE, ORG, or EVENT, along with corresponding German Wikipedia articles (if available) as supplementary data.
+
+ID: 791178297
+A query to obtain entities in Wikidata that are labeled or aliased “Wien” (in German) and categorized under PLACE, ORG, or EVENT, along with their aliases and German Wikipedia articles.
+
+ID: 791191738
+This SPARQL query retrieves entities referenced by the name “Wien” (label or alias), categorized under PLACE, ORG, or EVENT, and includes alias information in German and English, as well as counts of references in Wikipedia articles.
+
+ID: 791421314
+This SPARQL query targets entities labeled or aliased “Wien” (in German), categorized as PLACE, ORG, or EVENT, and collects relevant information including Wikipedia reference counts.
+
+ID: 791816589
+This query collects entities with the name “Wien” and counts the number of related Wikipedia articles across all languages.
+
+
+=========================================== SESSION BEGIN ===========================================
+ID: 449003100
+timestamp: 2018-01-06 14:57:26 +00:00
+SELECT DISTINCT ?var1  ?var2  ?var3  ?var4Label  ?var5  ?var6 ( COUNT ( DISTINCT  ?var7  ) AS  ?var8  )
+WHERE {
+  VALUES (  ?var9  ?var10  ?var1  ) {
+   (  <http://www.w3.org/2000/01/rdf-schema#label>  "Wien"@de "1"^^<http://www.w3.org/2001/XMLSchema#integer>  )
+   (  <http://www.w3.org/2004/02/skos/core#altLabel>  "Wien"@de "1"^^<http://www.w3.org/2001/XMLSchema#integer>  )
+  }
+  ?var2  ?var9  ?var10 .
+  VALUES (  ?var11  ?var3  ) {
+   (  <http://www.wikidata.org/entity/Q618123>  "PLACE" )
+   (  <http://www.wikidata.org/entity/Q43229>  "ORG" )
+   (  <http://www.wikidata.org/entity/Q1190554>  "EVENT" )
+  }
+  ?var2 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) ?var11 .
+ OPTIONAL {
+  VALUES (  ?var12  ) {
+   (  <http://www.w3.org/2000/01/rdf-schema#label>  )
+   (  <http://www.w3.org/2004/02/skos/core#altLabel>  )
+  }
+  ?var13  ?var12  ?var4Label .
+ FILTER (  ( (  LANG (  ?var4Label  )  =  "de" ) || (  LANG (  ?var4Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var5  <http://schema.org/about>  ?var13 ;
+ <http://schema.org/inLanguage>  "de".
+ }
+ OPTIONAL {
+  ?var7  <http://schema.org/about>  ?var13 .
+ }
+}
+GROUP BY  ?var1  ?var2  ?var3  ?var4Label  ?var5  ?var6 
+
+	|
+	|
+	v
+
+ID: 449108444
+timestamp: 2018-01-06 14:58:30 +00:00
+SELECT DISTINCT ?var1  ?var2  ?var3  ?var4Label  ?var5  ?var6 ( COUNT ( DISTINCT  ?var7  ) AS  ?var8  )
+WHERE {
+  VALUES (  ?var9  ?var10  ?var1  ) {
+   (  <http://www.w3.org/2000/01/rdf-schema#label>  "Wien"@de "1"^^<http://www.w3.org/2001/XMLSchema#integer>  )
+   (  <http://www.w3.org/2004/02/skos/core#altLabel>  "Wien"@de "1"^^<http://www.w3.org/2001/XMLSchema#integer>  )
+  }
+  ?var2  ?var9  ?var10 .
+  VALUES (  ?var11  ?var3  ) {
+   (  <http://www.wikidata.org/entity/Q618123>  "PLACE" )
+   (  <http://www.wikidata.org/entity/Q43229>  "ORG" )
+   (  <http://www.wikidata.org/entity/Q1190554>  "EVENT" )
+  }
+  ?var2 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) ?var11 .
+ OPTIONAL {
+  VALUES (  ?var12  ) {
+   (  <http://www.w3.org/2004/02/skos/core#altLabel>  )
+  }
+  ?var13  ?var12  ?var4Label .
+ FILTER (  ( (  LANG (  ?var4Label  )  =  "de" ) || (  LANG (  ?var4Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var5  <http://schema.org/about>  ?var13 ;
+ <http://schema.org/inLanguage>  "de".
+ }
+ OPTIONAL {
+  ?var7  <http://schema.org/about>  ?var13 .
+ }
+}
+GROUP BY  ?var1  ?var2  ?var3  ?var4Label  ?var5  ?var6 
+
+	|
+	|
+	v
+
+ID: 449319860
+timestamp: 2018-01-06 14:59:52 +00:00
+SELECT DISTINCT ?var1  ?var2  ?var3  ?var4Label  ?var5  ?var6 ( COUNT ( DISTINCT  ?var7  ) AS  ?var8  )
+WHERE {
+  VALUES (  ?var9  ?var10  ?var1  ) {
+   (  <http://www.w3.org/2000/01/rdf-schema#label>  "Wien"@de "1"^^<http://www.w3.org/2001/XMLSchema#integer>  )
+   (  <http://www.w3.org/2004/02/skos/core#altLabel>  "Wien"@de "1"^^<http://www.w3.org/2001/XMLSchema#integer>  )
+  }
+  ?var2  ?var9  ?var10 .
+  VALUES (  ?var11  ?var3  ) {
+   (  <http://www.wikidata.org/entity/Q618123>  "PLACE" )
+   (  <http://www.wikidata.org/entity/Q43229>  "ORG" )
+   (  <http://www.wikidata.org/entity/Q1190554>  "EVENT" )
+  }
+  ?var2 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) ?var11 .
+ OPTIONAL {
+  ?var12  <http://www.w3.org/2004/02/skos/core#altLabel>  ?var4Label .
+ FILTER (  ( (  LANG (  ?var4Label  )  =  "de" ) || (  LANG (  ?var4Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var5  <http://schema.org/about>  ?var12 ;
+ <http://schema.org/inLanguage>  "de".
+ }
+ OPTIONAL {
+  ?var7  <http://schema.org/about>  ?var12 .
+ }
+}
+GROUP BY  ?var1  ?var2  ?var3  ?var4Label  ?var5  ?var6 
+
+	|
+	|
+	v
+
+ID: 449384967
+timestamp: 2018-01-06 15:02:17 +00:00
+SELECT DISTINCT ?var1  ?var2  ?var3  ?var4Label  ?var5  ?var6 
+WHERE {
+  VALUES (  ?var7  ?var8  ?var1  ) {
+   (  <http://www.w3.org/2000/01/rdf-schema#label>  "Wien"@de "1"^^<http://www.w3.org/2001/XMLSchema#integer>  )
+   (  <http://www.w3.org/2004/02/skos/core#altLabel>  "Wien"@de "1"^^<http://www.w3.org/2001/XMLSchema#integer>  )
+  }
+  ?var2  ?var7  ?var8 .
+  VALUES (  ?var9  ?var3  ) {
+   (  <http://www.wikidata.org/entity/Q618123>  "PLACE" )
+   (  <http://www.wikidata.org/entity/Q43229>  "ORG" )
+   (  <http://www.wikidata.org/entity/Q1190554>  "EVENT" )
+  }
+  ?var2 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) ?var9 .
+ OPTIONAL {
+  ?var10  <http://www.w3.org/2004/02/skos/core#altLabel>  ?var4Label .
+ FILTER (  ( (  LANG (  ?var4Label  )  =  "de" ) || (  LANG (  ?var4Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var5  <http://schema.org/about>  ?var10 ;
+ <http://schema.org/inLanguage>  "de".
+ }
+}
+
+	|
+	|
+	v
+
+ID: 792022759
+timestamp: 2018-01-06 15:03:19 +00:00
+SELECT DISTINCT ?var1  ?var2  ?var3  ?var4  ?var5 
+WHERE {
+  VALUES (  ?var6  ?var7  ?var1  ) {
+   (  <http://www.w3.org/2000/01/rdf-schema#label>  "Wien"@de "1"^^<http://www.w3.org/2001/XMLSchema#integer>  )
+   (  <http://www.w3.org/2004/02/skos/core#altLabel>  "Wien"@de "1"^^<http://www.w3.org/2001/XMLSchema#integer>  )
+  }
+  ?var2  ?var6  ?var7 .
+  VALUES (  ?var8  ?var3  ) {
+   (  <http://www.wikidata.org/entity/Q618123>  "PLACE" )
+   (  <http://www.wikidata.org/entity/Q43229>  "ORG" )
+   (  <http://www.wikidata.org/entity/Q1190554>  "EVENT" )
+  }
+  ?var2 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) ?var8 .
+ OPTIONAL {
+  ?var4  <http://schema.org/about>  ?var9 ;
+ <http://schema.org/inLanguage>  "de".
+ }
+}
+
+	|
+	|
+	v
+
+ID: 792139171
+timestamp: 2018-01-06 15:04:51 +00:00
+SELECT DISTINCT ?var1  ?var2  ?var3  ?var4  ?var5 
+WHERE {
+  VALUES (  ?var6  ?var7  ?var1  ) {
+   (  <http://www.w3.org/2000/01/rdf-schema#label>  "Wien"@de "1"^^<http://www.w3.org/2001/XMLSchema#integer>  )
+   (  <http://www.w3.org/2004/02/skos/core#altLabel>  "Wien"@de "1"^^<http://www.w3.org/2001/XMLSchema#integer>  )
+  }
+  ?var2  ?var6  ?var7 .
+  VALUES (  ?var8  ?var3  ) {
+   (  <http://www.wikidata.org/entity/Q618123>  "PLACE" )
+   (  <http://www.wikidata.org/entity/Q43229>  "ORG" )
+   (  <http://www.wikidata.org/entity/Q1190554>  "EVENT" )
+  }
+  ?var2 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) ?var8 .
+ OPTIONAL {
+  ?var4  <http://schema.org/about>  ?var2 ;
+ <http://schema.org/inLanguage>  "de".
+ }
+}
+
+	|
+	|
+	v
+
+ID: 791178297
+timestamp: 2018-01-06 15:05:00 +00:00
+SELECT DISTINCT ?var1  ?var2  ?var3  ?var4  ?var5 
+WHERE {
+  VALUES (  ?var6  ?var7  ?var1  ) {
+   (  <http://www.w3.org/2000/01/rdf-schema#label>  "Wien"@de "1"^^<http://www.w3.org/2001/XMLSchema#integer>  )
+   (  <http://www.w3.org/2004/02/skos/core#altLabel>  "Wien"@de "1"^^<http://www.w3.org/2001/XMLSchema#integer>  )
+  }
+  ?var2  ?var6  ?var7 .
+  VALUES (  ?var8  ?var3  ) {
+   (  <http://www.wikidata.org/entity/Q618123>  "PLACE" )
+   (  <http://www.wikidata.org/entity/Q43229>  "ORG" )
+   (  <http://www.wikidata.org/entity/Q1190554>  "EVENT" )
+  }
+  ?var2 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) ?var8 .
+ OPTIONAL {
+  ?var2  <http://www.w3.org/2004/02/skos/core#altLabel>  ?var9Label .
+ FILTER (  ( (  LANG (  ?var9Label  )  =  "de" ) || (  LANG (  ?var9Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var4  <http://schema.org/about>  ?var2 ;
+ <http://schema.org/inLanguage>  "de".
+ }
+}
+
+	|
+	|
+	v
+
+ID: 791191738
+timestamp: 2018-01-06 15:05:12 +00:00
+SELECT DISTINCT ?var1  ?var2  ?var3  ?var4  ?var5  ?var6Label ( COUNT ( DISTINCT  ?var7  ) AS  ?var8  )
+WHERE {
+  VALUES (  ?var9  ?var10  ?var1  ) {
+   (  <http://www.w3.org/2000/01/rdf-schema#label>  "Wien"@de "1"^^<http://www.w3.org/2001/XMLSchema#integer>  )
+   (  <http://www.w3.org/2004/02/skos/core#altLabel>  "Wien"@de "1"^^<http://www.w3.org/2001/XMLSchema#integer>  )
+  }
+  ?var2  ?var9  ?var10 .
+  VALUES (  ?var11  ?var3  ) {
+   (  <http://www.wikidata.org/entity/Q618123>  "PLACE" )
+   (  <http://www.wikidata.org/entity/Q43229>  "ORG" )
+   (  <http://www.wikidata.org/entity/Q1190554>  "EVENT" )
+  }
+  ?var2 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) ?var11 .
+ OPTIONAL {
+  ?var2  <http://www.w3.org/2004/02/skos/core#altLabel>  ?var6Label .
+ FILTER (  ( (  LANG (  ?var6Label  )  =  "de" ) || (  LANG (  ?var6Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var4  <http://schema.org/about>  ?var2 ;
+ <http://schema.org/inLanguage>  "de".
+ }
+ OPTIONAL {
+  ?var7  <http://schema.org/about>  ?var2 .
+ }
+}
+GROUP BY  ?var1  ?var2  ?var3  ?var6Label  ?var4  ?var5 
+
+	|
+	|
+	v
+
+ID: 791421314
+timestamp: 2018-01-06 15:07:57 +00:00
+SELECT DISTINCT ?var1  ?var2  ?var3  ?var4  ?var5  ?var6Label ( COUNT ( DISTINCT  ?var7  ) AS  ?var8  )
+WHERE {
+  VALUES (  ?var9  ?var10  ?var1  ) {
+   (  <http://www.w3.org/2000/01/rdf-schema#label>  "Wien"@de "1"^^<http://www.w3.org/2001/XMLSchema#integer>  )
+   (  <http://www.w3.org/2004/02/skos/core#altLabel>  "Wien"@de "1"^^<http://www.w3.org/2001/XMLSchema#integer>  )
+  }
+  ?var2  ?var9  ?var10 .
+  VALUES (  ?var11  ?var3  ) {
+   (  <http://www.wikidata.org/entity/Q618123>  "PLACE" )
+   (  <http://www.wikidata.org/entity/Q43229>  "ORG" )
+   (  <http://www.wikidata.org/entity/Q1190554>  "EVENT" )
+  }
+  ?var2 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) ?var11 .
+ OPTIONAL {
+  ?var2  <http://www.w3.org/2004/02/skos/core#altLabel>  ?var6Label .
+ FILTER (  ( (  LANG (  ?var6Label  )  =  "de" ) || (  LANG (  ?var6Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var4  <http://schema.org/about>  ?var2 .
+  ?var4  <http://schema.org/inLanguage>  "de".
+  ?var4  <http://schema.org/isPartOf>  <https://de.wikipedia.org/> .
+ }
+ OPTIONAL {
+  ?var7  <http://schema.org/about>  ?var2 .
+ }
+}
+GROUP BY  ?var1  ?var2  ?var3  ?var6Label  ?var4  ?var5 
+
+	|
+	|
+	v
+
+ID: 791816589
+timestamp: 2018-01-06 15:11:26 +00:00
+SELECT DISTINCT ?var1  ?var2  ?var3  ?var4  ?var5  ?var6Label  ?var7 ( COUNT ( DISTINCT  ?var8  ) AS  ?var9  )
+WHERE {
+  VALUES (  ?var10  ?var11  ?var1  ) {
+   (  <http://www.w3.org/2000/01/rdf-schema#label>  "Wien"@de "1"^^<http://www.w3.org/2001/XMLSchema#integer>  )
+   (  <http://www.w3.org/2004/02/skos/core#altLabel>  "Wien"@de "1"^^<http://www.w3.org/2001/XMLSchema#integer>  )
+  }
+  ?var2  ?var10  ?var11 .
+  VALUES (  ?var12  ?var3  ) {
+   (  <http://www.wikidata.org/entity/Q618123>  "PLACE" )
+   (  <http://www.wikidata.org/entity/Q43229>  "ORG" )
+   (  <http://www.wikidata.org/entity/Q1190554>  "EVENT" )
+  }
+  ?var2 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) ?var12 .
+ OPTIONAL {
+  ?var2  <http://www.w3.org/2004/02/skos/core#altLabel>  ?var6Label .
+ FILTER (  ( (  LANG (  ?var6Label  )  =  "de" ) || (  LANG (  ?var6Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var2  <http://www.wikidata.org/prop/direct/P488>  ?var7 .
+ }
+ OPTIONAL {
+  ?var4  <http://schema.org/about>  ?var2 .
+  ?var4  <http://schema.org/inLanguage>  "de".
+  ?var4  <http://schema.org/isPartOf>  <https://de.wikipedia.org/> .
+ }
+ OPTIONAL {
+  ?var8  <http://schema.org/about>  ?var2 .
+ }
+}
+GROUP BY  ?var1  ?var2  ?var3  ?var6Label  ?var4  ?var5  ?var7 
+
+============================================ SESSION END ============================================
