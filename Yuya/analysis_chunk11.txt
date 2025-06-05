@@ -1,0 +1,78 @@
+5699 sessions
+
+
+Interesting sessions
+
+-----------------------------
+Starting from ID: 630414210
+
+A sequence of 15 queries.
+
+Summary: 
+These queries aim to find spanish famous people/characters that have no images in wikidata.
+
+First, a user finds the 50 male actors who are borned after 1970 and associated with ``human'' and spanish label but no images, with the 50 largest numbers of associated documents ( <http://schema.org/about>).
+
+Next, s/he gradually weakens the filtering conditions, removing gender, birthday, and human.
+Then, s/he tries to find other people, like fictional characters (Q207965), politician (Q521179), and fictional human (Q5643837).
+(ID: 632098004 and ID: 632787444) After this, s/he changes to find the 50 subclasses of fictional human and human with no images but the largest number of associated documents instead of individual people, respectivley.
+(ID: 632883461) s/he tries focus on the above query related to Peru (?var1 wdt:P495 wd:Q96 .).
+(ID: 632883461 and ID: 632829192) Finally, s/he obtains 50 sub-class names of Spanish and no image by alphabetical order in only Peru and all, respectively.
+
+------------------------
+Starting from ID: 835262163
+
+Summary:
+These queries aim to find people who born at Poland/Europe but have no Polish wikipedia pages. 
+
+A sequence of 4 queries.
+
+ID: 835262163
+Rank individuals born after 1910 in Poland (Q36) by the number of Wikipedia articles about them in languages other than Polish.
+
+ID: 835276371
+Identify individuals born in Poland after 1900 who do not have an article on the Polish Wikipedia, but have many articles in other languages.
+
+ID: 834410513
+Extract the top 10 individuals born in Europe (the administrative territorial entity P131 Q46) after 1900 who do not have an article on the Polish Wikipedia, but have a high number of articles in other language editions of Wikipedia.
+
+ID: 834576815
+Modify the target group to include humans born in locations that belong to the continent of Europe (P30 Q46).
+--------------------------
+
+Starting from ID: 449003100
+A sequence of 10 queries
+
+Summary:
+This series of queries systematically explores how the name “Wien” (Vienna)—as a German-language label or alias—is used across Wikidata entities categorized as places, organizations, or events.
+
+
+ID: 449003100
+This SPARQL query extracts entities labeled “Wien” (Vienna), identifying relevant places (PLACE), organizations (ORG), and events (EVENT), and investigates related Wikipedia articles, aliases, and usage frequency.
+
+ID: 449108444
+A query to retrieve a list of PLACE, ORG, or EVENT entities that have a label or alias of “Wien”@de, along with their occurrence count.
+
+ID: 449319860
+A query to extract Wikidata entities classified as PLACE, ORG, or EVENT with a label or alias of “Wien”@de, including their altLabels (in German and English) and the number of Wikipedia article references per language.
+
+ID: 449384967
+A query to search for Wikidata entities labeled or aliased as “Wien” (in German) and classified as cities, organizations, or events, and to collect associated information such as type, aliases, and Wikipedia articles.
+
+ID: 792022759
+A query to find Wikidata entities labeled or aliased as “Wien” (in German) that are categorized as “place,” “organization,” or “event,” and to identify associated German Wikipedia articles.
+
+ID: 792139171
+A query to retrieve Wikidata entities labeled or aliased as “Wien” (in German) and categorized as PLACE, ORG, or EVENT, along with corresponding German Wikipedia articles (if available) as supplementary data.
+
+ID: 791178297
+A query to obtain entities in Wikidata that are labeled or aliased “Wien” (in German) and categorized under PLACE, ORG, or EVENT, along with their aliases and German Wikipedia articles.
+
+ID: 791191738
+This SPARQL query retrieves entities referenced by the name “Wien” (label or alias), categorized under PLACE, ORG, or EVENT, and includes alias information in German and English, as well as counts of references in Wikipedia articles.
+
+ID: 791421314
+This SPARQL query targets entities labeled or aliased “Wien” (in German), categorized as PLACE, ORG, or EVENT, and collects relevant information including Wikipedia reference counts.
+
+ID: 791816589
+This query collects entities with the name “Wien” and counts the number of related Wikipedia articles across all languages.
