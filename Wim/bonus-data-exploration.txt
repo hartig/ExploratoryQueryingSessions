@@ -1,0 +1,99 @@
+This is a *data exploration* session. It looks for human settlements (http://www.wikidata.org/entity/Q486972) in the United Kingdom (http://www.wikidata.org/entity/Q145) whose label matches different regexes.
+
+Query 1: pool
+Query 2: caster
+Query 3: pon
+Query 4: minster
+Query 5: mouth
+
+
+
+
+=========================================== SESSION BEGIN ===========================================
+ID: 705086461
+timestamp: 2017-06-12 20:02:11 +00:00
+SELECT ?var1  ?var1Label  ?var2 
+WHERE {
+  ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q486972> ;
+ <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q145> ;
+ <http://www.w3.org/2000/01/rdf-schema#label>  ?var1Label ;
+ <http://www.wikidata.org/prop/direct/P625>  ?var2 .
+ FILTER (  ( (  LANG (  ?var1Label  )  =  "en" ) ) 
+) .
+ FILTER (  (  REGEX (  ?var1Label , "(pool)$" )  ) 
+) .
+}
+
+	|
+	|
+	v
+
+ID: 705496975
+timestamp: 2017-06-12 20:02:53 +00:00
+SELECT ?var1  ?var1Label  ?var2 
+WHERE {
+  ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q486972> ;
+ <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q145> ;
+ <http://www.w3.org/2000/01/rdf-schema#label>  ?var1Label ;
+ <http://www.wikidata.org/prop/direct/P625>  ?var2 .
+ FILTER (  ( (  LANG (  ?var1Label  )  =  "en" ) ) 
+) .
+ FILTER (  (  REGEX (  ?var1Label , "(caster)$" )  ) 
+) .
+}
+
+	|
+	|
+	v
+
+ID: 705812548
+timestamp: 2017-06-12 20:03:49 +00:00
+SELECT ?var1  ?var1Label  ?var2 
+WHERE {
+  ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q486972> ;
+ <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q145> ;
+ <http://www.w3.org/2000/01/rdf-schema#label>  ?var1Label ;
+ <http://www.wikidata.org/prop/direct/P625>  ?var2 .
+ FILTER (  ( (  LANG (  ?var1Label  )  =  "en" ) ) 
+) .
+ FILTER (  (  REGEX (  ?var1Label , "(pon)$" )  ) 
+) .
+}
+
+	|
+	|
+	v
+
+ID: 705867019
+timestamp: 2017-06-12 20:04:22 +00:00
+SELECT ?var1  ?var1Label  ?var2 
+WHERE {
+  ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q486972> ;
+ <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q145> ;
+ <http://www.w3.org/2000/01/rdf-schema#label>  ?var1Label ;
+ <http://www.wikidata.org/prop/direct/P625>  ?var2 .
+ FILTER (  ( (  LANG (  ?var1Label  )  =  "en" ) ) 
+) .
+ FILTER (  (  REGEX (  ?var1Label , "(minster)$" )  ) 
+) .
+}
+
+	|
+	|
+	v
+
+ID: 705041658
+timestamp: 2017-06-12 20:05:09 +00:00
+SELECT ?var1  ?var1Label  ?var2 
+WHERE {
+  ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q486972> ;
+ <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q145> ;
+ <http://www.w3.org/2000/01/rdf-schema#label>  ?var1Label ;
+ <http://www.wikidata.org/prop/direct/P625>  ?var2 .
+ FILTER (  ( (  LANG (  ?var1Label  )  =  "en" ) ) 
+) .
+ FILTER (  (  REGEX (  ?var1Label , "(mouth)$" )  ) 
+) .
+}
+
+============================================ SESSION END ===================================
