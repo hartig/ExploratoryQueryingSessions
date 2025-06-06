@@ -1,4 +1,4 @@
-This is a *data exploration* session. It looks for human settlements (http://www.wikidata.org/entity/Q486972) in the United Kingdom (http://www.wikidata.org/entity/Q145) whose label matches different regexes.
+This looks like a *data exploration* session. It looks for human settlements (http://www.wikidata.org/entity/Q486972) in the United Kingdom (http://www.wikidata.org/entity/Q145) whose label matches different regexes.
 
 Query 1: pool
 Query 2: caster
