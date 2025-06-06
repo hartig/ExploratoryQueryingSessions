@@ -1,4 +1,4 @@
-This is a *data exploration* session. It searches for humans who are spotify artists and who died in the last year. Then there are a few variations on how long ago they died (last 10 years, last 100 years).
+This looks like a *data exploration* session. It searches for humans who are spotify artists and who died in the last year. Then there are a few variations on how long ago they died (last 10 years, last 100 years).
 
 Query 1: Searches humans who died in the last year. (With side-conditions on string matching.)
 Query 2: Adds condition that the humans have a spotify artist ID (https://www.wikidata.org/wiki/Property:P1902)
