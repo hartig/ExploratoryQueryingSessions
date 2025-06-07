@@ -1,9 +1,16 @@
 #!/bin/bash
 set -euo pipefail
 
-INPUT_FILE="sessions.txt"
+# === Usage and arguments ===
+if [ $# -lt 1 ] || [ $# -gt 2 ]; then
+  echo "Usage: $0 <input_file> [number_of_chunks]"
+  exit 1
+fi
+
+INPUT_FILE="$1"
+CHUNKS="${2:-12}"  # default to 12 if not specified
+
 DELIMITER="=========================================== SESSION BEGIN ==========================================="
-CHUNKS=12
 
 echo "[Step 1] Measuring session sizes..."
 awk -v delim="$DELIMITER" '
