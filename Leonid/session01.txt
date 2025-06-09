@@ -1,0 +1,67 @@
+// changing source to get right answers
+//  Category: Same Information Look Up for Different Entities
+
+
+=========================================== SESSION BEGIN ===========================================
+ID: 569679577
+timestamp: 2017-06-12 02:14:05 +00:00
+SELECT ?var1 
+WHERE {
+  <http://dbpedia.org/resource/Guangxi_Gymnasium>  <http://www.w3.org/2002/07/owl#sameAs>  ?var1 .
+ FILTER (  (  REGEX (  ?var1 , "string1" )  ) 
+) .
+}
+
+	|
+	|
+	v
+
+ID: 570137160
+timestamp: 2017-06-12 02:14:20 +00:00
+SELECT ?var1 
+WHERE {
+  <http://dbpedia.org/resource/Gymnasium>  <http://www.w3.org/2002/07/owl#sameAs>  ?var1 .
+ FILTER (  (  REGEX (  ?var1 , "string1" )  ) 
+) .
+}
+
+	|
+	|
+	v
+
+ID: 570363587
+timestamp: 2017-06-12 02:14:41 +00:00
+SELECT ?var1 
+WHERE {
+  <http://dbpedia.org/resource/Yulin_Stadium>  <http://www.w3.org/2002/07/owl#sameAs>  ?var1 .
+ FILTER (  (  REGEX (  ?var1 , "string1" )  ) 
+) .
+}
+
+	|
+	|
+	v
+
+ID: 570459079
+timestamp: 2017-06-12 02:15:17 +00:00
+SELECT ?var1 
+WHERE {
+  <http://dbpedia.org/resource/Guangxi_Stadium>  <http://www.w3.org/2002/07/owl#sameAs>  ?var1 .
+ FILTER (  (  REGEX (  ?var1 , "string1" )  ) 
+) .
+}
+
+	|
+	|
+	v
+
+ID: 570468766
+timestamp: 2017-06-12 02:15:23 +00:00
+SELECT ?var1 
+WHERE {
+  <http://dbpedia.org/resource/Kerameikos>  <http://www.w3.org/2002/07/owl#sameAs>  ?var1 .
+ FILTER (  (  REGEX (  ?var1 , "string1" )  ) 
+) .
+}
+
+============================================ SESSION END ============================================
