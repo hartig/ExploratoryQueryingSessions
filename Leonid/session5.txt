@@ -1,0 +1,209 @@
+// the ultimate goal is to find a list of Euler's student and their other advisors and it's done by multiple refinement of the query
+// Category: Query refinement
+
+SELECT ?var1  ?var2  ?var3  ?var1Label  ?var2Label  ?var3Label 
+WHERE {
+  <http://www.wikidata.org/entity/Q7604>  <http://www.wikidata.org/prop/direct/P802> + ?var1 .
+  ?var1  ?var2  ?var3 .
+ FILTER (  ( (  ?var2  =  <http://www.wikidata.org/prop/direct/P1066>  ) ) 
+) .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+
+	|
+	|
+	v
+
+ID: 907890926
+timestamp: 2017-08-06 08:50:05 +00:00
+SELECT ?var1  ?var2  ?var3  ?var1Label  ?var2Label  ?var3Label 
+WHERE {
+  <http://www.wikidata.org/entity/Q7604>  <http://www.wikidata.org/prop/direct/P802> + ?var1 .
+  ?var1  ?var2  ?var3 .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+
+	|
+	|
+	v
+
+ID: 907901997
+timestamp: 2017-08-06 08:50:21 +00:00
+SELECT ?var1  ?var2  ?var3  ?var1Label  ?var2Label  ?var3Label 
+WHERE {
+  <http://www.wikidata.org/entity/Q7604>  <http://www.wikidata.org/prop/direct/P802> + ?var1 .
+  ?var1  ?var2  ?var3 .
+ FILTER (  ( (  ?var2  =  <http://www.wikidata.org/prop/direct/P802>  ) ) 
+) .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+
+	|
+	|
+	v
+
+ID: 907890928
+timestamp: 2017-08-06 08:51:01 +00:00
+SELECT ?var1  ?var2  ?var3  ?var1Label  ?var2Label  ?var3Label 
+WHERE {
+  <http://www.wikidata.org/entity/Q7604>  <http://www.wikidata.org/prop/direct/P802> + ?var1 .
+  ?var1  ?var2  ?var3 .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+
+	|
+	|
+	v
+
+ID: 907938467
+timestamp: 2017-08-06 08:51:47 +00:00
+SELECT ?var1  ?var2  ?var3  ?var1Label  ?var2Label  ?var3Label 
+WHERE {
+  <http://www.wikidata.org/entity/Q7604>  <http://www.wikidata.org/prop/direct/P802> + ?var3 .
+  ?var1  ?var2  ?var3 .
+ FILTER (  ( (  ?var2  =  <http://www.wikidata.org/prop/direct/P1066>  ) ) 
+) .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+
+	|
+	|
+	v
+
+ID: 907939423
+timestamp: 2017-08-06 08:51:51 +00:00
+SELECT ?var1  ?var2  ?var3  ?var1Label  ?var2Label  ?var3Label 
+WHERE {
+  <http://www.wikidata.org/entity/Q7604>  <http://www.wikidata.org/prop/direct/P802> + ?var3 .
+  ?var1  ?var2  ?var3 .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+
+	|
+	|
+	v
+
+ID: 907954855
+timestamp: 2017-08-06 08:52:42 +00:00
+SELECT ?var1  ?var2  ?var3 
+WHERE {
+  <http://www.wikidata.org/entity/Q7604>  <http://www.wikidata.org/prop/direct/P802> + ?var3 .
+  ?var1  ?var2  ?var3 .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+
+	|
+	|
+	v
+
+ID: 907956950
+timestamp: 2017-08-06 08:52:49 +00:00
+SELECT ?var1  ?var2  ?var3 
+WHERE {
+  <http://www.wikidata.org/entity/Q7604>  <http://www.wikidata.org/prop/direct/P802> + ?var3 .
+  ?var1  ?var2  ?var3 .
+ FILTER (  ( (  ?var2  =  <http://www.wikidata.org/prop/direct/P1066>  ) ) 
+) .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+
+	|
+	|
+	v
+
+ID: 907958313
+timestamp: 2017-08-06 08:52:59 +00:00
+SELECT ?var1  ?var2  ?var3 
+WHERE {
+  <http://www.wikidata.org/entity/Q7604>  <http://www.wikidata.org/prop/direct/P802> + ?var3 .
+  ?var1  ?var2  ?var3 .
+ FILTER (  ( (  ?var2  =  <http://www.wikidata.org/prop/direct/P802>  ) ) 
+) .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+
+	|
+	|
+	v
+
+ID: 907960564
+timestamp: 2017-08-06 08:53:10 +00:00
+SELECT ?var1  ?var2  ?var3  ?var1Label 
+WHERE {
+  <http://www.wikidata.org/entity/Q7604>  <http://www.wikidata.org/prop/direct/P802> + ?var3 .
+  ?var1  ?var2  ?var3 .
+ FILTER (  ( (  ?var2  =  <http://www.wikidata.org/prop/direct/P802>  ) ) 
+) .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+
+	|
+	|
+	v
+
+ID: 907962386
+timestamp: 2017-08-06 08:53:18 +00:00
+SELECT ?var1  ?var2  ?var3  ?var1Label  ?var3Label 
+WHERE {
+  <http://www.wikidata.org/entity/Q7604>  <http://www.wikidata.org/prop/direct/P802> + ?var3 .
+  ?var1  ?var2  ?var3 .
+ FILTER (  ( (  ?var2  =  <http://www.wikidata.org/prop/direct/P802>  ) ) 
+) .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+
+	|
+	|
+	v
+
+ID: 907977472
+timestamp: 2017-08-06 08:54:08 +00:00
+SELECT ?var1  ?var2  ?var3  ?var1Label  ?var3Label 
+WHERE {
+  <http://www.wikidata.org/entity/Q7604>  <http://www.wikidata.org/prop/direct/P802> + ?var3 .
+  ?var1  <http://www.wikidata.org/prop/direct/P802> + ?var3 .
+  ?var1  ?var2  ?var3 .
+ FILTER (  ( (  ?var2  =  <http://www.wikidata.org/prop/direct/P802>  ) ) 
+) .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+
+	|
+	|
+	v
+
+ID: 907978277
+timestamp: 2017-08-06 08:54:16 +00:00
+SELECT ?var1  ?var2  ?var3  ?var1Label  ?var3Label 
+WHERE {
+  <http://www.wikidata.org/entity/Q7604>  <http://www.wikidata.org/prop/direct/P802> + ?var3 .
+  ?var1  <http://www.wikidata.org/prop/direct/P802> + ?var3 .
+  ?var1  ?var2  ?var3 .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
