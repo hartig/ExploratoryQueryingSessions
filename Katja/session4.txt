@@ -1,0 +1,408 @@
+ID of first query in session: 863678592
+
+number of queries: 16
+
+query evolution description:
+
+exploring a randomly chosen set of classes and properties with labels and descriptions in French
+
+Not sure what the first part of the query is supposed to mean
+
+
+user story:
+The user is exploring different properties and classes
+
+
+
+query 1:
+# Starting with things connected to Belgium and a French description
+
+SELECT ?var1  ?var2Label  ?var3 
+WHERE {
+  <http://www.bigdata.com/queryHints#Query>  <http://www.bigdata.com/queryHints#optimizer>  "None".
+ {
+  SELECT DISTINCT ?var1 
+  WHERE   {
+    ?var4  ?var5  <http://www.wikidata.org/entity/Q31> .
+    ?var1  ?var6  ?var5 .
+    ?var1  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://wikiba.se/ontology#Property> .
+  }
+  LIMIT 100
+ }
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  ?var1  <http://schema.org/description>  ?var3 .
+ FILTER (  ( (  LANG (  ?var2Label  )  =  "fr" ) ) 
+) .
+ FILTER (  ( (  LANG (  ?var3  )  =  "fr" ) ) 
+) .
+}
+LIMIT 100
+
+
+query 2:
+# looking for lists with a French description
+
+SELECT ?var1  ?var2Label  ?var3 
+WHERE {
+  <http://www.bigdata.com/queryHints#Query>  <http://www.bigdata.com/queryHints#optimizer>  "None".
+ {
+  SELECT DISTINCT ?var1 
+  WHERE   {
+    ?var4  <http://www.wikidata.org/prop/direct/P360>  ?var1 .
+  }
+  LIMIT 100
+ }
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  ?var1  <http://schema.org/description>  ?var3 .
+ FILTER (  ( (  LANG (  ?var2Label  )  =  "fr" ) ) 
+) .
+ FILTER (  ( (  LANG (  ?var3  )  =  "fr" ) ) 
+) .
+}
+LIMIT 100
+
+
+query 3:
+# Now things connected to the Japanese family name "Date" with labels and descriptions in French
+
+SELECT ?var1  ?var2Label  ?var3 
+WHERE {
+  <http://www.bigdata.com/queryHints#Query>  <http://www.bigdata.com/queryHints#optimizer>  "None".
+ {
+  SELECT DISTINCT ?var1 
+  WHERE   {
+    ?var4  ?var5  <http://www.wikidata.org/entity/Q5227515> .
+    ?var1  ?var6  ?var5 .
+    ?var1  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://wikiba.se/ontology#Property> .
+  }
+  LIMIT 100
+ }
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  ?var1  <http://schema.org/description>  ?var3 .
+ FILTER (  ( (  LANG (  ?var2Label  )  =  "fr" ) ) 
+) .
+ FILTER (  ( (  LANG (  ?var3  )  =  "fr" ) ) 
+) .
+}
+LIMIT 100
+
+
+query 4:
+# now things with a date of death, removed some triple patterns, no results
+
+SELECT ?var1  ?var2Label  ?var3 
+WHERE {
+  <http://www.bigdata.com/queryHints#Query>  <http://www.bigdata.com/queryHints#optimizer>  "None".
+ {
+  SELECT DISTINCT ?var1 
+  WHERE   {
+    ?var4  <http://www.wikidata.org/prop/direct/P570>  ?var1 .
+  }
+  LIMIT 100
+ }
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  ?var1  <http://schema.org/description>  ?var3 .
+ FILTER (  ( (  LANG (  ?var2Label  )  =  "fr" ) ) 
+) .
+ FILTER (  ( (  LANG (  ?var3  )  =  "fr" ) ) 
+) .
+}
+LIMIT 100
+
+
+query 5:
+# triple patterns back, now looking for things connected to null with French labels and descriptions
+
+SELECT ?var1  ?var2Label  ?var3 
+WHERE {
+  <http://www.bigdata.com/queryHints#Query>  <http://www.bigdata.com/queryHints#optimizer>  "None".
+ {
+  SELECT DISTINCT ?var1 
+  WHERE   {
+    ?var4  ?var5  <http://www.wikidata.org/entity/Q543287> .
+    ?var1  ?var6  ?var5 .
+    ?var1  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://wikiba.se/ontology#Property> .
+  }
+  LIMIT 100
+ }
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  ?var1  <http://schema.org/description>  ?var3 .
+ FILTER (  ( (  LANG (  ?var2Label  )  =  "fr" ) ) 
+) .
+ FILTER (  ( (  LANG (  ?var3  )  =  "fr" ) ) 
+) .
+}
+LIMIT 100
+
+
+
+query 6:
+# triple patterns dropped again, now property "floruit"
+
+
+SELECT ?var1  ?var2Label  ?var3 
+WHERE {
+  <http://www.bigdata.com/queryHints#Query>  <http://www.bigdata.com/queryHints#optimizer>  "None".
+ {
+  SELECT DISTINCT ?var1 
+  WHERE   {
+    ?var4  <http://www.wikidata.org/prop/direct/P1317>  ?var1 .
+  }
+  LIMIT 100
+ }
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  ?var1  <http://schema.org/description>  ?var3 .
+ FILTER (  ( (  LANG (  ?var2Label  )  =  "fr" ) ) 
+) .
+ FILTER (  ( (  LANG (  ?var3  )  =  "fr" ) ) 
+) .
+}
+LIMIT 100
+
+    
+query 7:
+# triple patterns back, looking for humans now
+
+SELECT ?var1  ?var2Label  ?var3 
+WHERE {
+  <http://www.bigdata.com/queryHints#Query>  <http://www.bigdata.com/queryHints#optimizer>  "None".
+ {
+  SELECT DISTINCT ?var1 
+  WHERE   {
+    ?var4  ?var5  <http://www.wikidata.org/entity/Q5> .
+    ?var1  ?var6  ?var5 .
+    ?var1  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://wikiba.se/ontology#Property> .
+  }
+  LIMIT 100
+ }
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  ?var1  <http://schema.org/description>  ?var3 .
+ FILTER (  ( (  LANG (  ?var2Label  )  =  "fr" ) ) 
+) .
+ FILTER (  ( (  LANG (  ?var3  )  =  "fr" ) ) 
+) .
+}
+LIMIT 100
+
+
+
+query 8:
+# triple patterns dropped, back looking for floruit
+
+SELECT ?var1  ?var2Label  ?var3 
+WHERE {
+  <http://www.bigdata.com/queryHints#Query>  <http://www.bigdata.com/queryHints#optimizer>  "None".
+ {
+  SELECT DISTINCT ?var1 
+  WHERE   {
+    ?var4  <http://www.wikidata.org/prop/direct/P1317>  ?var1 .
+  }
+  LIMIT 100
+ }
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  ?var1  <http://schema.org/description>  ?var3 .
+ FILTER (  ( (  LANG (  ?var2Label  )  =  "fr" ) ) 
+) .
+ FILTER (  ( (  LANG (  ?var3  )  =  "fr" ) ) 
+) .
+}
+LIMIT 100
+
+
+
+query 9:
+# https://www.wikidata.org/wiki/Q19239878 doesn't exist (anymore)
+
+SELECT ?var1  ?var2Label  ?var3 
+WHERE {
+  <http://www.bigdata.com/queryHints#Query>  <http://www.bigdata.com/queryHints#optimizer>  "None".
+ {
+  SELECT DISTINCT ?var1 
+  WHERE   {
+    ?var4  ?var5  <http://www.wikidata.org/entity/Q19239878> .
+    ?var1  ?var6  ?var5 .
+    ?var1  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://wikiba.se/ontology#Property> .
+  }
+  LIMIT 100
+ }
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  ?var1  <http://schema.org/description>  ?var3 .
+ FILTER (  ( (  LANG (  ?var2Label  )  =  "fr" ) ) 
+) .
+ FILTER (  ( (  LANG (  ?var3  )  =  "fr" ) ) 
+) .
+}
+LIMIT 100
+
+
+
+query 9:
+# now looking for things with a country of citizenship
+
+
+SELECT ?var1  ?var2Label  ?var3 
+WHERE {
+  <http://www.bigdata.com/queryHints#Query>  <http://www.bigdata.com/queryHints#optimizer>  "None".
+ {
+  SELECT DISTINCT ?var1 
+  WHERE   {
+    ?var4  <http://www.wikidata.org/prop/direct/P27>  ?var1 .
+  }
+  LIMIT 100
+ }
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  ?var1  <http://schema.org/description>  ?var3 .
+ FILTER (  ( (  LANG (  ?var2Label  )  =  "fr" ) ) 
+) .
+ FILTER (  ( (  LANG (  ?var3  )  =  "fr" ) ) 
+) .
+}
+LIMIT 100
+
+
+
+query 10:
+# things connected to Belgium
+
+SELECT ?var1  ?var2Label  ?var3 
+WHERE {
+  <http://www.bigdata.com/queryHints#Query>  <http://www.bigdata.com/queryHints#optimizer>  "None".
+ {
+  SELECT DISTINCT ?var1 
+  WHERE   {
+    ?var4  ?var5  <http://www.wikidata.org/entity/Q31> .
+    ?var1  ?var6  ?var5 .
+    ?var1  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://wikiba.se/ontology#Property> .
+  }
+  LIMIT 100
+ }
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  ?var1  <http://schema.org/description>  ?var3 .
+ FILTER (  ( (  LANG (  ?var2Label  )  =  "fr" ) ) 
+) .
+ FILTER (  ( (  LANG (  ?var3  )  =  "fr" ) ) 
+) .
+}
+LIMIT 100
+
+
+query 11:
+# back to floruit
+
+ID: 865193199
+timestamp: 2017-08-23 13:53:32 +00:00
+SELECT ?var1  ?var2Label  ?var3 
+WHERE {
+  <http://www.bigdata.com/queryHints#Query>  <http://www.bigdata.com/queryHints#optimizer>  "None".
+ {
+  SELECT DISTINCT ?var1 
+  WHERE   {
+    ?var4  <http://www.wikidata.org/prop/direct/P1317>  ?var1 .
+  }
+  LIMIT 100
+ }
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  ?var1  <http://schema.org/description>  ?var3 .
+ FILTER (  ( (  LANG (  ?var2Label  )  =  "fr" ) ) 
+) .
+ FILTER (  ( (  LANG (  ?var3  )  =  "fr" ) ) 
+) .
+}
+LIMIT 100
+
+
+query 12:
+# things connected to businesspersons
+
+ID: 865136599
+timestamp: 2017-08-23 13:53:49 +00:00
+SELECT ?var1  ?var2Label  ?var3 
+WHERE {
+  <http://www.bigdata.com/queryHints#Query>  <http://www.bigdata.com/queryHints#optimizer>  "None".
+ {
+  SELECT DISTINCT ?var1 
+  WHERE   {
+    ?var4  ?var5  <http://www.wikidata.org/entity/Q43845> .
+    ?var1  ?var6  ?var5 .
+    ?var1  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://wikiba.se/ontology#Property> .
+  }
+  LIMIT 100
+ }
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  ?var1  <http://schema.org/description>  ?var3 .
+ FILTER (  ( (  LANG (  ?var2Label  )  =  "fr" ) ) 
+) .
+ FILTER (  ( (  LANG (  ?var3  )  =  "fr" ) ) 
+) .
+}
+LIMIT 100
+
+
+
+query 13: 
+# things connected via subclass of
+
+SELECT ?var1  ?var2Label  ?var3 
+WHERE {
+  <http://www.bigdata.com/queryHints#Query>  <http://www.bigdata.com/queryHints#optimizer>  "None".
+ {
+  SELECT DISTINCT ?var1 
+  WHERE   {
+    ?var4  <http://www.wikidata.org/prop/direct/P27>  ?var1 .
+  }
+  LIMIT 100
+ }
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  ?var1  <http://schema.org/description>  ?var3 .
+ FILTER (  ( (  LANG (  ?var2Label  )  =  "fr" ) ) 
+) .
+ FILTER (  ( (  LANG (  ?var3  )  =  "fr" ) ) 
+) .
+}
+LIMIT 100
+
+
+query 14: 
+# things connected to property position held
+
+
+SELECT ?var1  ?var2Label  ?var3 
+WHERE {
+  <http://www.bigdata.com/queryHints#Query>  <http://www.bigdata.com/queryHints#optimizer>  "None".
+ {
+  SELECT DISTINCT ?var1 
+  WHERE   {
+    ?var4  <http://www.wikidata.org/prop/statement/P39>  ?var1 .
+  }
+  LIMIT 100
+ }
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  ?var1  <http://schema.org/description>  ?var3 .
+ FILTER (  ( (  LANG (  ?var2Label  )  =  "en" ) ) 
+) .
+ FILTER (  ( (  LANG (  ?var3  )  =  "en" ) ) 
+) .
+}
+LIMIT 100
+
+
+query 15: connected via property significant person
+
+SELECT ?var1  ?var2Label  ?var3 
+WHERE {
+  <http://www.bigdata.com/queryHints#Query>  <http://www.bigdata.com/queryHints#optimizer>  "None".
+ {
+  SELECT DISTINCT ?var1 
+  WHERE   {
+    ?var4  <http://www.wikidata.org/prop/direct/P3342>  ?var1 .
+  }
+  LIMIT 100
+ }
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  ?var1  <http://schema.org/description>  ?var3 .
+ FILTER (  ( (  LANG (  ?var2Label  )  =  "fr" ) ) 
+) .
+ FILTER (  ( (  LANG (  ?var3  )  =  "fr" ) ) 
+) .
+}
+LIMIT 100
