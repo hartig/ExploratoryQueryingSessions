@@ -1,56 +1,71 @@
-# session 4: swiss train stations
+# session 4: time of earliest written record of cities
 
-ID of first query in session: 706207299
+ID of first query in session: 836323374
 
 number of queries: 4
 
-query evolution description: The user successively renames variables or replaces them with blank nodes. An IRI is replaced once and after the second query "DiSTINCT" is added.
+query evolution description: The user successively removes or adds variables to the output. A triple pattern is added but removed later on. The limits are also modified.
 
 user story:
-The user starts by searching for the properties (and the corresponding objects) that are associated with a specific Swiss railroad station, but not with a specific other station.
-The user then only tries to select the Wikidata properties. To do this, the user first tries to rename a variable, but ultimately replaces some variables with blank nodes. At the same time, only distinct properties are searched for.
-In the last query, the two stations are swapped with each other.
+The user starts by searching for cities and their time of earliest written record.
+After this, the user modifies a previously unknown variable in the select clause, asks also for the official name of the city and reduces the limit.
+In the next query the limit is increased again.
+In the fourth query a variable is removed from the select-clause and in the fifth query the offical city name is dropped.
 
 
 query 1:
 
-SELECT *
+SELECT ?var1  ?var2Label  ?var3
 WHERE {
-  wd:Q30089185  ?var1  ?var2 .
-  MINUS   {
-    wd:Q224494  ?var1  ?var2 .
-  }
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q515> .
+  ?var1  <http://www.wikidata.org/prop/direct/P1249>  ?var3 .
 }
+ORDER BY ASC( ?var3 )
+LIMIT 100
 
 
 query 2:
 
-SELECT *
+SELECT ?var1  ?var2  ?var3
 WHERE {
-  wd:Q30089185  ?var1  ?var2 .
-  MINUS   {
-    wd:Q224494  ?var1  ?var3 .
-  }
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q515> .
+  ?var1  <http://www.wikidata.org/prop/direct/P1249>  ?var2 .
+  ?var1  <http://www.wikidata.org/prop/direct/P1448>  ?var3 .
 }
+ORDER BY ASC( ?var2 )
+LIMIT 1
 
 
 query 3:
 
-SELECT DISTINCT *
+SELECT ?var1  ?var2  ?var3
 WHERE {
-  wd:Q30089185  ?var1  [] .
-  MINUS   {
-    wd:Q224494  ?var1  [] .
-  }
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q515> .
+  ?var1  <http://www.wikidata.org/prop/direct/P1249>  ?var2 .
+  ?var1  <http://www.wikidata.org/prop/direct/P1448>  ?var3 .
 }
+ORDER BY ASC( ?var2 )
+LIMIT 10
 
 
 query 4:
 
-SELECT DISTINCT *
+SELECT ?var1  ?var2
 WHERE {
-  wd:Q224494  ?var1  [] .
-  MINUS   {
-    wd:Q30089185  ?var1  [] .
-  }
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q515> .
+  ?var1  <http://www.wikidata.org/prop/direct/P1249>  ?var2 .
+  ?var1  <http://www.wikidata.org/prop/direct/P1448>  ?var3 .
 }
+ORDER BY ASC( ?var2 )
+LIMIT 10
+
+
+query 5:
+
+SELECT ?var1  ?var2
+WHERE {
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q515> .
+  ?var1  <http://www.wikidata.org/prop/direct/P1249>  ?var2 .
+}
+ORDER BY ASC( ?var2 )
+LIMIT 10
