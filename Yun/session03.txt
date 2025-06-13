@@ -1,0 +1,185 @@
+# session 3
+
+ID of first query in session:745274337
+
+number of queries: 8
+
+query evolution description:
+
+The user gradually refines his/her request to explore works related to a particular series (Q858036, Federalist Papers ), and enrich the results with metadata like creators and publication dates.
+
+user story:
+
+
+
+
+
+=========================================== SESSION BEGIN ===========================================
+
+query 1:
+
+# Initial exploration. ?var2 is selected, but never bound. All items that are instances of light novel series.
+
+ID: 745274337
+timestamp: 2017-06-13 19:13:28 +00:00
+SELECT ?var1  ?var1Label  ?var2 
+WHERE {
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q858036> .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+
+	|
+	|
+	v
+
+query 2:
+
+# This is a class-level exploration, likely trying to understand what types and subclasses are relevant. Items that are instances of something (P31) and subclasses of something (P279)
+
+ID: 744424540
+timestamp: 2017-06-13 19:15:17 +00:00
+SELECT ?var1  ?var1Label  ?var2Label  ?var3Label 
+WHERE {
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  ?var2 ;
+ <http://www.wikidata.org/prop/direct/P279>  ?var3 .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+LIMIT 1000
+
+	|
+	|
+	v
+
+query 3:
+
+# try to find book seris and authors when available 
+
+ID: 744814910
+timestamp: 2017-06-13 19:15:49 +00:00
+SELECT ?var1  ?var1Label  ?var2  ?var3  ?var3Label 
+WHERE {
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q858036> .
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P50>  ?var3 .
+ }
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+
+	|
+	|
+	v
+
+query 4:
+
+# retrive data from certain authors
+
+ID: 744949566
+timestamp: 2017-06-13 19:16:13 +00:00
+SELECT ?var1  ?var1Label  ?var2Label 
+WHERE {
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  ?var2 ;
+ <http://www.wikidata.org/prop/direct/P279>  ?var2 .
+ FILTER (  ( (  ?var2  !=  <http://www.wikidata.org/entity/Q7187>  ) ) 
+) .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+LIMIT 1000
+
+	|
+	|
+	v
+
+query 5:
+
+# Add publication date
+
+ID: 745276112
+timestamp: 2017-06-13 19:16:19 +00:00
+SELECT ?var1  ?var1Label  ?var2Label 
+WHERE {
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  ?var2 ;
+ <http://www.wikidata.org/prop/direct/P279>  ?var2 .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+LIMIT 1000
+
+	|
+	|
+	v
+
+query 6:
+
+# finalize the query
+
+ID: 745212135
+timestamp: 2017-06-13 19:17:07 +00:00
+SELECT ?var1  ?var1Label  ?var2  ?var2Label 
+WHERE {
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q858036> .
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P50>  ?var2 .
+ }
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+
+	|
+	|
+	v
+
+query 7:
+
+#
+
+ID: 745314071
+timestamp: 2017-06-13 19:17:40 +00:00
+SELECT ?var1  ?var1Label  ?var2  ?var2Label  ?var3 
+WHERE {
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q858036> .
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P50>  ?var2 .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P577>  ?var3 .
+ }
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+
+	|
+	|
+	v
+
+query 8:
+
+#
+
+ID: 744366936
+timestamp: 2017-06-13 19:20:25 +00:00
+SELECT ?var1  ?var1Label  ?var2  ?var2Label  ?var3 
+WHERE {
+  ?var1  <http://www.wikidata.org/prop/direct/P179>  <http://www.wikidata.org/entity/Q858036> .
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P50>  ?var2 .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P577>  ?var3 .
+ }
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+
+============================================ SESSION END ============================================

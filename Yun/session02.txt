@@ -1,0 +1,199 @@
+# session 2
+
+ID of first query in session: 626598322
+
+number of queries: 6
+
+query evolution description:
+
+The queries gradually explore and adjust the geographic area by shifting the bounding box slightly southwards (latitude decreases) and expanding or shrinking it eastwards (longitude increases/decreases).
+
+user story:
+The user look for up to 3000 Wikidata entities located inside the geographical rectangle bounded by longitude 8° to 11°, latitude 38° to 39°. For each entity, it tries to get the geographic coordinates, an optional image, an optional Commons media category, and some labels. It is more likely that the user likes to explore the are and find something interesting to visit or investigate.
+
+
+=========================================== SESSION BEGIN ===========================================
+query 1:
+
+# Initial box over some area
+
+ID: 626598322
+timestamp: 2017-06-13 18:01:11 +00:00
+SELECT ?var1  ?var1Label  ?var2  ?var3  ?var4  ?var5  ?var6 
+WHERE {
+ SERVICE  <http://wikiba.se/ontology#box>   {
+    ?var1  <http://www.wikidata.org/prop/direct/P625>  ?var2 .
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#cornerSouthWest>  "POINT(8 40)"^^<http://www.opengis.net/ont/geosparql#wktLiteral> .
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#cornerNorthEast>  "POINT(10 41)"^^<http://www.opengis.net/ont/geosparql#wktLiteral> .
+  }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var3 .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P373>  ?var6 .
+ }
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "string1".
+    ?var1  <http://schema.org/description>  ?var5 .
+    ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var1Label .
+  }
+}
+LIMIT 3000
+
+	|
+	|
+	v
+
+query 2:
+
+# Shifted box 1 degree south
+
+ID: 743017954
+timestamp: 2017-06-13 18:01:15 +00:00
+SELECT ?var1  ?var1Label  ?var2  ?var3  ?var4  ?var5  ?var6 
+WHERE {
+ SERVICE  <http://wikiba.se/ontology#box>   {
+    ?var1  <http://www.wikidata.org/prop/direct/P625>  ?var2 .
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#cornerSouthWest>  "POINT(8 39)"^^<http://www.opengis.net/ont/geosparql#wktLiteral> .
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#cornerNorthEast>  "POINT(10 40)"^^<http://www.opengis.net/ont/geosparql#wktLiteral> .
+  }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var3 .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P373>  ?var6 .
+ }
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "string1".
+    ?var1  <http://schema.org/description>  ?var5 .
+    ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var1Label .
+  }
+}
+LIMIT 3000
+
+	|
+	|
+	v
+
+query 3:
+
+# Box widened to the east
+
+ID: 743498368
+timestamp: 2017-06-13 18:01:28 +00:00
+SELECT ?var1  ?var1Label  ?var2  ?var3  ?var4  ?var5  ?var6 
+WHERE {
+ SERVICE  <http://wikiba.se/ontology#box>   {
+    ?var1  <http://www.wikidata.org/prop/direct/P625>  ?var2 .
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#cornerSouthWest>  "POINT(8 39)"^^<http://www.opengis.net/ont/geosparql#wktLiteral> .
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#cornerNorthEast>  "POINT(11 40)"^^<http://www.opengis.net/ont/geosparql#wktLiteral> .
+  }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var3 .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P373>  ?var6 .
+ }
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "string1".
+    ?var1  <http://schema.org/description>  ?var5 .
+    ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var1Label .
+  }
+}
+LIMIT 3000
+
+	|
+	|
+	v
+
+query 4:
+
+# Box reset to previous smaller area
+
+ID: 743018040
+timestamp: 2017-06-13 18:01:40 +00:00
+SELECT ?var1  ?var1Label  ?var2  ?var3  ?var4  ?var5  ?var6 
+WHERE {
+ SERVICE  <http://wikiba.se/ontology#box>   {
+    ?var1  <http://www.wikidata.org/prop/direct/P625>  ?var2 .
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#cornerSouthWest>  "POINT(8 39)"^^<http://www.opengis.net/ont/geosparql#wktLiteral> .
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#cornerNorthEast>  "POINT(10 40)"^^<http://www.opengis.net/ont/geosparql#wktLiteral> .
+  }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var3 .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P373>  ?var6 .
+ }
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "string1".
+    ?var1  <http://schema.org/description>  ?var5 .
+    ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var1Label .
+  }
+}
+LIMIT 3000
+
+	|
+	|
+	v
+
+
+query 5:
+
+# Shifted box 1 degree south again
+
+ID: 743841194
+timestamp: 2017-06-13 18:03:11 +00:00
+SELECT ?var1  ?var1Label  ?var2  ?var3  ?var4  ?var5  ?var6 
+WHERE {
+ SERVICE  <http://wikiba.se/ontology#box>   {
+    ?var1  <http://www.wikidata.org/prop/direct/P625>  ?var2 .
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#cornerSouthWest>  "POINT(8 38)"^^<http://www.opengis.net/ont/geosparql#wktLiteral> .
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#cornerNorthEast>  "POINT(10 39)"^^<http://www.opengis.net/ont/geosparql#wktLiteral> .
+  }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var3 .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P373>  ?var6 .
+ }
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "string1".
+    ?var1  <http://schema.org/description>  ?var5 .
+    ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var1Label .
+  }
+}
+LIMIT 3000
+
+	|
+	|
+	v
+
+query 6:
+
+# Box widened east again
+
+ID: 743872994
+timestamp: 2017-06-13 18:03:43 +00:00
+SELECT ?var1  ?var1Label  ?var2  ?var3  ?var4  ?var5  ?var6 
+WHERE {
+ SERVICE  <http://wikiba.se/ontology#box>   {
+    ?var1  <http://www.wikidata.org/prop/direct/P625>  ?var2 .
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#cornerSouthWest>  "POINT(8 38)"^^<http://www.opengis.net/ont/geosparql#wktLiteral> .
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#cornerNorthEast>  "POINT(11 39)"^^<http://www.opengis.net/ont/geosparql#wktLiteral> .
+  }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var3 .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P373>  ?var6 .
+ }
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "string1".
+    ?var1  <http://schema.org/description>  ?var5 .
+    ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var1Label .
+  }
+}
+LIMIT 3000
+
+============================================ SESSION END ============================================
