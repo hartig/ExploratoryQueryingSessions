@@ -4,9 +4,7 @@ number of queries: 6
 
 query evolution description:
 
-exploring a randomly chosen set of classes and properties with labels and descriptions in French
-
-Not sure what the first part of the query is supposed to mean
+The user starts with a core query to which he adds triple patterns. The intention of the query also changes.
 
 
 user story:
