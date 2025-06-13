@@ -1,402 +1,88 @@
-ID of first query in session: 658139981
+ID of first query in session: 415926280
 
-number of queries: 12
+number of queries: 5
 
 query evolution description:
 
-The session is about finding works of Leonardo da Vinci. 
+The property path expressions in the query are gradually changed and another one is temporarily added.
+In addition, a shorthand notation is used for patterns from a certain query onwards.
 
 
 
 user story:
-The user starts off with retrieving a broad range of possible properties in OPTIONAL clauses, and then iteratively exploring which ones don't have values and dropping them, changing the ordering of the results. 
-It also involves some debugging, e.g., dropping an additional property path. 
+The user starts off with searching for any instances of administrative divisions located in North Rhine-Westphalia using property path expressions.
+The user then temporarily adds another property path expression, modifies existing expressions and rewrites the query, using an equivalent shorthand notation.
 
 
 
 
 query 1:
+# asks for any instances of administrative divisions located in North Rhine-Westphalia
 
-# This is a very general query and retrieves works from Leonardo da Vinci that have an image - using a property path expression to include two roles: architect and creator. The query directly retrieves lots of information about the works: inception, native label, location, collection, height, width, location of creation, genre, made from material - all within OPTIONAL clauses to get results.
-
-SELECT DISTINCT ?var1  ?var1Label (  ?var2  AS  ?var3  ) ?var4Label (  YEAR (  ?var5  )  AS  ?var6  ) ?var7Label  ?var8Label  ?var9  ?var10  ?var11Label  ?var12Label  ?var13Label 
+SELECT ?var1  ?var1Label
 WHERE {
-  ?var1 ( <http://www.wikidata.org/prop/direct/P84> | <http://www.wikidata.org/prop/direct/P170> ) <http://www.wikidata.org/entity/Q762> .
-  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var2 .
- OPTIONAL {
-  ?var1 ( <http://www.wikidata.org/prop/direct/P170> | <http://www.wikidata.org/prop/direct/P84> ) ?var4 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P571>  ?var5 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P1705>  ?var14Label .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P276>  ?var7 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P195>  ?var8 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P2048>  ?var9 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P2049>  ?var10 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P1071>  ?var11 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P136>  ?var12 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P186>  ?var13 .
- }
+  ?var1  <http://www.wikidata.org/prop/direct/P131> + <http://www.wikidata.org/entity/Q1198> .
+  ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q387917> .
  SERVICE  <http://wikiba.se/ontology#label>   {
-    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,it,fr,de,es".
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "de".
   }
 }
-ORDER BY ASC( ?var5 )
 
 
 
 query 2: 
+# adds additional property path expression, which requires that an entity exists for the admin. division that is in North Rhine-Westphalia
 
-# groups the result by the work (var1) and group conacts to get a better overview and avoid repetitions - leading to empty results in the cells other than var1
-
-SELECT ?var1 (  SAMPLE ( ?var2  ) AS  ?var3  )(  GROUP_CONCAT (  DISTINCT  ?var4 ; SEPARATOR =  ", " )  AS  ?var5  )
+SELECT ?var1  ?var1Label
 WHERE {
- SELECT DISTINCT ?var1  ?var1Label (  ?var6  AS  ?var7  ) ?var8Label (  YEAR (  ?var9  )  AS  ?var10  ) ?var11Label  ?var12Label  ?var13  ?var14  ?var15Label  ?var16Label  ?var17Label 
- WHERE  {
-   ?var1 ( <http://www.wikidata.org/prop/direct/P84> | <http://www.wikidata.org/prop/direct/P170> ) <http://www.wikidata.org/entity/Q762> .
-   ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var6 .
-  OPTIONAL {
-   ?var1 ( <http://www.wikidata.org/prop/direct/P170> | <http://www.wikidata.org/prop/direct/P84> ) ?var8 .
-  }
-  OPTIONAL {
-   ?var1  <http://www.wikidata.org/prop/direct/P571>  ?var9 .
-  }
-  OPTIONAL {
-   ?var1  <http://www.wikidata.org/prop/direct/P1705>  ?var18Label .
-  }
-  OPTIONAL {
-   ?var1  <http://www.wikidata.org/prop/direct/P276>  ?var11 .
-  }
-  OPTIONAL {
-   ?var1  <http://www.wikidata.org/prop/direct/P195>  ?var12 .
-  }
-  OPTIONAL {
-   ?var1  <http://www.wikidata.org/prop/direct/P2048>  ?var13 .
-  }
-  OPTIONAL {
-   ?var1  <http://www.wikidata.org/prop/direct/P2049>  ?var14 .
-  }
-  OPTIONAL {
-   ?var1  <http://www.wikidata.org/prop/direct/P1071>  ?var15 .
-  }
-  OPTIONAL {
-   ?var1  <http://www.wikidata.org/prop/direct/P136>  ?var16 .
-  }
-  OPTIONAL {
-   ?var1  <http://www.wikidata.org/prop/direct/P186>  ?var17 .
-  }
-  SERVICE  <http://wikiba.se/ontology#label>    {
-     <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,it,fr,de,es".
-   }
+ {
+   ?var2  <http://www.wikidata.org/prop/direct/P150> * ?var1 .
+   ?var2  <http://www.wikidata.org/prop/direct/P131> + <http://www.wikidata.org/entity/Q1198> .
  }
- ORDER BY ASC( ?var9 )
+  ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q387917> .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "de".
+  }
 }
-GROUP BY  ?var1 
 
 
 
 query 3:
-# appears to be the same as query 1
+# removes the new property path expression
 
-SELECT DISTINCT ?var1  ?var1Label (  ?var2  AS  ?var3  ) ?var4Label (  YEAR (  ?var5  )  AS  ?var6  ) ?var7Label  ?var8Label  ?var9  ?var10  ?var11Label  ?var12Label  ?var13Label 
+SELECT ?var1  ?var1Label
 WHERE {
-  ?var1 ( <http://www.wikidata.org/prop/direct/P84> | <http://www.wikidata.org/prop/direct/P170> ) <http://www.wikidata.org/entity/Q762> .
-  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var2 .
- OPTIONAL {
-  ?var1 ( <http://www.wikidata.org/prop/direct/P170> | <http://www.wikidata.org/prop/direct/P84> ) ?var4 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P571>  ?var5 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P1705>  ?var14Label .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P276>  ?var7 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P195>  ?var8 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P2048>  ?var9 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P2049>  ?var10 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P1071>  ?var11 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P136>  ?var12 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P186>  ?var13 .
- }
+  ?var1  <http://www.wikidata.org/prop/direct/P131> + <http://www.wikidata.org/entity/Q1198> .
+  ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q387917> .
  SERVICE  <http://wikiba.se/ontology#label>   {
-    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,it,fr,de,es".
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "de".
   }
 }
-ORDER BY ASC( ?var5 )
 
 
 
 query 4:
-# some pieces of information (variables) are removed to get a better overview (genre, made from material) and reduce the number of results
+# uses shorthand notation; changes property path expression to a triple pattern
 
-SELECT DISTINCT ?var1  ?var1Label (  ?var2  AS  ?var3  ) ?var4Label (  YEAR (  ?var5  )  AS  ?var6  ) ?var7Label  ?var8Label  ?var9  ?var10  ?var11Label 
+SELECT ?var1  ?var1Label
 WHERE {
-  ?var1 ( <http://www.wikidata.org/prop/direct/P84> | <http://www.wikidata.org/prop/direct/P170> ) <http://www.wikidata.org/entity/Q762> .
-  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var2 .
- OPTIONAL {
-  ?var1 ( <http://www.wikidata.org/prop/direct/P170> | <http://www.wikidata.org/prop/direct/P84> ) ?var4 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P571>  ?var5 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P1705>  ?var12Label .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P276>  ?var7 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P195>  ?var8 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P2048>  ?var9 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P2049>  ?var10 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P1071>  ?var11 .
- }
+  ?var1  <http://www.wikidata.org/prop/direct/P131>  <http://www.wikidata.org/entity/Q1198> ;
+( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q387917> .
  SERVICE  <http://wikiba.se/ontology#label>   {
-    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,it,fr,de,es".
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "de".
   }
 }
-ORDER BY ASC( ?var5 )
 
 
 
 query 5: 
-# drops one more piece of information (collection)
+# changes triple pattern back to property path expression
 
-SELECT DISTINCT ?var1  ?var1Label (  ?var2  AS  ?var3  ) ?var4Label (  YEAR (  ?var5  )  AS  ?var6  ) ?var7Label  ?var8  ?var9  ?var10Label 
+SELECT ?var1  ?var1Label
 WHERE {
-  ?var1 ( <http://www.wikidata.org/prop/direct/P84> | <http://www.wikidata.org/prop/direct/P170> ) <http://www.wikidata.org/entity/Q762> .
-  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var2 .
- OPTIONAL {
-  ?var1 ( <http://www.wikidata.org/prop/direct/P170> | <http://www.wikidata.org/prop/direct/P84> ) ?var4 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P571>  ?var5 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P1705>  ?var11Label .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P276>  ?var7 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P2048>  ?var8 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P2049>  ?var9 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P1071>  ?var10 .
- }
+  ?var1  <http://www.wikidata.org/prop/direct/P131> * <http://www.wikidata.org/entity/Q1198> ;
+( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q387917> .
  SERVICE  <http://wikiba.se/ontology#label>   {
-    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,it,fr,de,es".
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "de".
   }
 }
-ORDER BY ASC( ?var5 )
-
-
-query 6: 
-# now drops the redundant optional clause with the property path that was already in the main query.
-
-SELECT DISTINCT ?var1  ?var1Label (  ?var2  AS  ?var3  )(  YEAR (  ?var4  )  AS  ?var5  ) ?var6Label  ?var7  ?var8  ?var9Label 
-WHERE {
-  ?var1 ( <http://www.wikidata.org/prop/direct/P84> | <http://www.wikidata.org/prop/direct/P170> ) <http://www.wikidata.org/entity/Q762> .
-  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var2 .
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P571>  ?var4 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P1705>  ?var10Label .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P276>  ?var6 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P2048>  ?var7 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P2049>  ?var8 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P1071>  ?var9 .
- }
- SERVICE  <http://wikiba.se/ontology#label>   {
-    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,it,fr,de,es".
-  }
-}
-ORDER BY ASC( ?var4 )
-
-
-query 7: 
-# now also drops more information (height, width)
-
-SELECT DISTINCT ?var1  ?var1Label (  ?var2  AS  ?var3  )(  YEAR (  ?var4  )  AS  ?var5  ) ?var6Label  ?var7Label 
-WHERE {
-  ?var1 ( <http://www.wikidata.org/prop/direct/P84> | <http://www.wikidata.org/prop/direct/P170> ) <http://www.wikidata.org/entity/Q762> .
-  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var2 .
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P571>  ?var4 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P1705>  ?var8Label .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P276>  ?var6 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P1071>  ?var7 .
- }
- SERVICE  <http://wikiba.se/ontology#label>   {
-    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,it,fr,de,es".
-  }
-}
-ORDER BY ASC( ?var4 )
-
-
-query 8: 
-# now also dropping information about location
-
-SELECT DISTINCT ?var1  ?var1Label (  ?var2  AS  ?var3  )(  YEAR (  ?var4  )  AS  ?var5  ) ?var6Label 
-WHERE {
-  ?var1 ( <http://www.wikidata.org/prop/direct/P84> | <http://www.wikidata.org/prop/direct/P170> ) <http://www.wikidata.org/entity/Q762> .
-  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var2 .
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P571>  ?var4 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P1705>  ?var7Label .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P1071>  ?var6 .
- }
- SERVICE  <http://wikiba.se/ontology#label>   {
-    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,it,fr,de,es".
-  }
-}
-ORDER BY ASC( ?var4 )
-
-
-query 9: 
-# changes the ORDER BY clause from inception to native label
-
-SELECT DISTINCT ?var1  ?var1Label (  ?var2  AS  ?var3  )(  YEAR (  ?var4  )  AS  ?var5  ) ?var6Label 
-WHERE {
-  ?var1 ( <http://www.wikidata.org/prop/direct/P84> | <http://www.wikidata.org/prop/direct/P170> ) <http://www.wikidata.org/entity/Q762> .
-  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var2 .
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P571>  ?var4 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P1705>  ?var7Label .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P1071>  ?var6 .
- }
- SERVICE  <http://wikiba.se/ontology#label>   {
-    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,it,fr,de,es".
-  }
-}
-ORDER BY ASC( ?var1Label )
-
-
-query 10: 
-# changes ORDER By to work ID
-
-SELECT DISTINCT ?var1  ?var1Label (  ?var2  AS  ?var3  )(  YEAR (  ?var4  )  AS  ?var5  ) ?var6Label 
-WHERE {
-  ?var1 ( <http://www.wikidata.org/prop/direct/P84> | <http://www.wikidata.org/prop/direct/P170> ) <http://www.wikidata.org/entity/Q762> .
-  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var2 .
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P571>  ?var4 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P1705>  ?var7Label .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P1071>  ?var6 .
- }
- SERVICE  <http://wikiba.se/ontology#label>   {
-    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,it,fr,de,es".
-  }
-}
-ORDER BY ASC( ?var1 )
-
-
-query 11: 
-# dropping inception entirely including in the select clause
-
-SELECT DISTINCT ?var1  ?var1Label (  ?var2  AS  ?var3  ) ?var4Label 
-WHERE {
-  ?var1 ( <http://www.wikidata.org/prop/direct/P84> | <http://www.wikidata.org/prop/direct/P170> ) <http://www.wikidata.org/entity/Q762> .
-  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var2 .
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P571>  ?var5 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P1705>  ?var6Label .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P1071>  ?var4 .
- }
- SERVICE  <http://wikiba.se/ontology#label>   {
-    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,it,fr,de,es".
-  }
-}
-ORDER BY ASC( ?var1 )
-
-
-query 12: 
-# renaming the variables once more
-SELECT DISTINCT ?var1  ?var1Label (  ?var2  AS  ?var3  )
-WHERE {
-  ?var1 ( <http://www.wikidata.org/prop/direct/P84> | <http://www.wikidata.org/prop/direct/P170> ) <http://www.wikidata.org/entity/Q762> .
-  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var2 .
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P571>  ?var4 .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P1705>  ?var5Label .
- }
- OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P1071>  ?var6 .
- }
- SERVICE  <http://wikiba.se/ontology#label>   {
-    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,it,fr,de,es".
-  }
-}
-ORDER BY ASC( ?var1 )

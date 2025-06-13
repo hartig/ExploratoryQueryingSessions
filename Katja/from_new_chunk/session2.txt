@@ -1,0 +1,174 @@
+ID of first query in session: 727239243
+
+number of queries: 8
+
+query evolution description:
+
+User is trying to is trying to debug a query IMDB IDs that start with nm.
+
+--> no point considering this one any further.
+
+
+user story:
+
+
+
+
+query 1:
+# no result
+
+SELECT ?var1  ?var2 
+WHERE {
+  ?var3  <http://www.wikidata.org/prop/direct/P31>  ?var4 .
+  ?var3  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q33999> .
+  ?var3  <http://www.wikidata.org/prop/direct/P345>  ?var1 .
+  ?var5  <http://schema.org/about>  ?var3 .
+  ?var5  <http://schema.org/isPartOf>  <https://en.wikipedia.org/> .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en".
+    ?var3  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
+  }
+ FILTER (  (  STRSTARTS (  ?var1 , "nm" )  ) 
+) .
+}
+ORDER BY ASC( ?var1 )
+
+
+
+query 2:
+# still no result
+
+SELECT ?var1  ?var2 
+WHERE {
+  ?var3  <http://www.wikidata.org/prop/direct/P31>  ?var4 .
+  ?var3  <http://www.wikidata.org/prop/direct/P345>  ?var1 .
+  ?var3  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q33999> .
+  ?var5  <http://schema.org/about>  ?var3 .
+  ?var5  <http://schema.org/isPartOf>  <https://en.wikipedia.org/> .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en".
+    ?var3  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
+  }
+ FILTER (  (  STRSTARTS (  ?var1 , "nm" )  ) 
+) .
+}
+ORDER BY ASC( ?var1 )
+
+
+query 3:
+# make it more general to get results, times out
+
+SELECT ?var1  ?var2 
+WHERE {
+  ?var3  <http://www.wikidata.org/prop/direct/P31>  ?var4 .
+  ?var3  <http://www.wikidata.org/prop/direct/P345>  ?var1 .
+  ?var5  <http://schema.org/about>  ?var3 .
+  ?var5  <http://schema.org/isPartOf>  <https://en.wikipedia.org/> .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en".
+    ?var3  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
+  }
+ FILTER (  (  STRSTARTS (  ?var1 , "nm" )  ) 
+) .
+}
+ORDER BY ASC( ?var1 )
+LIMIT 50
+
+
+query 4: 
+# dropped one variable in select clause, increased limit, times out
+
+SELECT ?var1  ?var2  ?var3 
+WHERE {
+  ?var4  <http://www.wikidata.org/prop/direct/P31>  ?var5 .
+  ?var4  <http://www.wikidata.org/prop/direct/P345>  ?var1 .
+  ?var3  <http://schema.org/about>  ?var4 .
+  ?var3  <http://schema.org/isPartOf>  <https://en.wikipedia.org/> .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en".
+    ?var4  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
+  }
+ FILTER (  (  STRSTARTS (  ?var1 , "nm" )  ) 
+) .
+}
+ORDER BY ASC( ?var1 )
+LIMIT 75000
+
+
+query 5:
+# reduce limit to 50000, times out
+
+SELECT ?var1  ?var2  ?var3 
+WHERE {
+  ?var4  <http://www.wikidata.org/prop/direct/P31>  ?var5 .
+  ?var4  <http://www.wikidata.org/prop/direct/P345>  ?var1 .
+  ?var3  <http://schema.org/about>  ?var4 .
+  ?var3  <http://schema.org/isPartOf>  <https://en.wikipedia.org/> .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en".
+    ?var4  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
+  }
+ FILTER (  (  STRSTARTS (  ?var1 , "nm" )  ) 
+) .
+}
+ORDER BY ASC( ?var1 )
+LIMIT 50000
+
+
+query 6:
+# adding the property to select only males, no results
+
+SELECT ?var1  ?var2  ?var3 
+WHERE {
+  ?var4  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q6581097> .
+  ?var4  <http://www.wikidata.org/prop/direct/P31>  ?var5 .
+  ?var4  <http://www.wikidata.org/prop/direct/P345>  ?var1 .
+  ?var3  <http://schema.org/about>  ?var4 .
+  ?var3  <http://schema.org/isPartOf>  <https://en.wikipedia.org/> .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en".
+    ?var4  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
+  }
+ FILTER (  (  STRSTARTS (  ?var1 , "nm" )  ) 
+) .
+}
+ORDER BY ASC( ?var1 )
+LIMIT 50000
+
+query 7: 
+# dropping a condition, still no results
+
+SELECT ?var1  ?var2  ?var3 
+WHERE {
+  ?var4  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q6581097> .
+  ?var4  <http://www.wikidata.org/prop/direct/P345>  ?var1 .
+  ?var3  <http://schema.org/about>  ?var4 .
+  ?var3  <http://schema.org/isPartOf>  <https://en.wikipedia.org/> .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en".
+    ?var4  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
+  }
+ FILTER (  (  STRSTARTS (  ?var1 , "nm" )  ) 
+) .
+}
+ORDER BY ASC( ?var1 )
+LIMIT 50000
+
+query 8: 
+# dropping the condition on males, times out, user gives up
+
+SELECT ?var1  ?var2  ?var3 
+WHERE {
+  ?var4  <http://www.wikidata.org/prop/direct/P31>  ?var5 .
+  ?var4  <http://www.wikidata.org/prop/direct/P345>  ?var1 .
+  ?var3  <http://schema.org/about>  ?var4 .
+  ?var3  <http://schema.org/isPartOf>  <https://en.wikipedia.org/> .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en".
+    ?var4  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
+  }
+ FILTER (  (  STRSTARTS (  ?var1 , "nm" )  ) 
+) .
+}
+ORDER BY ASC( ?var1 )
+LIMIT 50000

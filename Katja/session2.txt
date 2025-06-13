@@ -1,174 +1,207 @@
-ID of first query in session: 727239243
+ID of first query in session: 739630605
 
-number of queries: 8
+number of queries: 9
 
 query evolution description:
 
-User is trying to is trying to debug a query IMDB IDs that start with nm.
-
---> no point considering this one any further.
+The user changes the language of the label service several times and makes a property path expression (alternative) temporarily optional and also modifies it several times.
 
 
 user story:
-
+The user starts by searching for instances in the broader class business or company that are located in China and have a property street address, location of formation or administrative entity in which they are located.
+The properties listed last are optional for a short time and modified several times.
+The language of the label service is also changed several times during this process.
 
 
 
 query 1:
-# no result
 
-SELECT ?var1  ?var2 
+SELECT DISTINCT ?var1  ?var1Label  ?var2Label
 WHERE {
-  ?var3  <http://www.wikidata.org/prop/direct/P31>  ?var4 .
-  ?var3  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q33999> .
-  ?var3  <http://www.wikidata.org/prop/direct/P345>  ?var1 .
-  ?var5  <http://schema.org/about>  ?var3 .
-  ?var5  <http://schema.org/isPartOf>  <https://en.wikipedia.org/> .
+ {
+   ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q4830453> ;
+ <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q148> .
+ }
+  UNION
+ {
+   ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q783794> ;
+ <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q148> .
+ }
+  ?var1 ( <http://www.wikidata.org/prop/direct/P131> | <http://www.wikidata.org/prop/direct/P969> | <http://www.wikidata.org/prop/direct/P740> ) ?var2 .
  SERVICE  <http://wikiba.se/ontology#label>   {
-    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en".
-    ?var3  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "zh-cn".
   }
- FILTER (  (  STRSTARTS (  ?var1 , "nm" )  ) 
-) .
 }
-ORDER BY ASC( ?var1 )
 
 
 
 query 2:
-# still no result
+# changes label service language
 
-SELECT ?var1  ?var2 
+SELECT DISTINCT ?var1  ?var1Label  ?var2Label
 WHERE {
-  ?var3  <http://www.wikidata.org/prop/direct/P31>  ?var4 .
-  ?var3  <http://www.wikidata.org/prop/direct/P345>  ?var1 .
-  ?var3  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q33999> .
-  ?var5  <http://schema.org/about>  ?var3 .
-  ?var5  <http://schema.org/isPartOf>  <https://en.wikipedia.org/> .
+ {
+   ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q4830453> ;
+ <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q148> .
+ }
+  UNION
+ {
+   ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q783794> ;
+ <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q148> .
+ }
+  ?var1 ( <http://www.wikidata.org/prop/direct/P131> | <http://www.wikidata.org/prop/direct/P969> | <http://www.wikidata.org/prop/direct/P740> ) ?var2 .
  SERVICE  <http://wikiba.se/ontology#label>   {
-    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en".
-    ?var3  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "zh".
   }
- FILTER (  (  STRSTARTS (  ?var1 , "nm" )  ) 
-) .
 }
-ORDER BY ASC( ?var1 )
 
 
 query 3:
-# make it more general to get results, times out
+# changes label service language again
 
-SELECT ?var1  ?var2 
+SELECT DISTINCT ?var1  ?var1Label  ?var2Label
 WHERE {
-  ?var3  <http://www.wikidata.org/prop/direct/P31>  ?var4 .
-  ?var3  <http://www.wikidata.org/prop/direct/P345>  ?var1 .
-  ?var5  <http://schema.org/about>  ?var3 .
-  ?var5  <http://schema.org/isPartOf>  <https://en.wikipedia.org/> .
+ {
+   ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q4830453> ;
+ <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q148> .
+ }
+  UNION
+ {
+   ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q783794> ;
+ <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q148> .
+ }
+  ?var1 ( <http://www.wikidata.org/prop/direct/P131> | <http://www.wikidata.org/prop/direct/P969> | <http://www.wikidata.org/prop/direct/P740> ) ?var2 .
  SERVICE  <http://wikiba.se/ontology#label>   {
     <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en".
-    ?var3  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
   }
- FILTER (  (  STRSTARTS (  ?var1 , "nm" )  ) 
-) .
 }
-ORDER BY ASC( ?var1 )
-LIMIT 50
 
 
 query 4: 
-# dropped one variable in select clause, increased limit, times out
+# property street address, location of formation or administrative entity are now optional
 
-SELECT ?var1  ?var2  ?var3 
+SELECT DISTINCT ?var1  ?var1Label  ?var2Label
 WHERE {
-  ?var4  <http://www.wikidata.org/prop/direct/P31>  ?var5 .
-  ?var4  <http://www.wikidata.org/prop/direct/P345>  ?var1 .
-  ?var3  <http://schema.org/about>  ?var4 .
-  ?var3  <http://schema.org/isPartOf>  <https://en.wikipedia.org/> .
+ {
+   ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q4830453> ;
+ <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q148> .
+ }
+  UNION
+ {
+   ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q783794> ;
+ <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q148> .
+ }
+ OPTIONAL {
+  ?var1 ( <http://www.wikidata.org/prop/direct/P131> | <http://www.wikidata.org/prop/direct/P969> | <http://www.wikidata.org/prop/direct/P740> ) ?var2 .
+ }
  SERVICE  <http://wikiba.se/ontology#label>   {
     <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en".
-    ?var4  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
   }
- FILTER (  (  STRSTARTS (  ?var1 , "nm" )  ) 
-) .
 }
-ORDER BY ASC( ?var1 )
-LIMIT 75000
 
 
 query 5:
-# reduce limit to 50000, times out
+# the property headquarters location is added to the alternatives list
 
-SELECT ?var1  ?var2  ?var3 
+SELECT DISTINCT ?var1  ?var1Label  ?var2Label
 WHERE {
-  ?var4  <http://www.wikidata.org/prop/direct/P31>  ?var5 .
-  ?var4  <http://www.wikidata.org/prop/direct/P345>  ?var1 .
-  ?var3  <http://schema.org/about>  ?var4 .
-  ?var3  <http://schema.org/isPartOf>  <https://en.wikipedia.org/> .
+ {
+   ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q4830453> ;
+ <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q148> .
+ }
+  UNION
+ {
+   ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q783794> ;
+ <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q148> .
+ }
+ OPTIONAL {
+  ?var1 ( <http://www.wikidata.org/prop/direct/P159> | <http://www.wikidata.org/prop/direct/P131> | <http://www.wikidata.org/prop/direct/P969> | <http://www.wikidata.org/prop/direct/P740> ) ?var2 .
+ }
  SERVICE  <http://wikiba.se/ontology#label>   {
     <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en".
-    ?var4  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
   }
- FILTER (  (  STRSTARTS (  ?var1 , "nm" )  ) 
-) .
 }
-ORDER BY ASC( ?var1 )
-LIMIT 50000
 
 
 query 6:
-# adding the property to select only males, no results
+# changes label service language again
 
-SELECT ?var1  ?var2  ?var3 
+SELECT DISTINCT ?var1  ?var1Label  ?var2Label
 WHERE {
-  ?var4  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q6581097> .
-  ?var4  <http://www.wikidata.org/prop/direct/P31>  ?var5 .
-  ?var4  <http://www.wikidata.org/prop/direct/P345>  ?var1 .
-  ?var3  <http://schema.org/about>  ?var4 .
-  ?var3  <http://schema.org/isPartOf>  <https://en.wikipedia.org/> .
+ {
+   ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q4830453> ;
+ <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q148> .
+ }
+  UNION
+ {
+   ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q783794> ;
+ <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q148> .
+ }
+  ?var1 ( <http://www.wikidata.org/prop/direct/P159> | <http://www.wikidata.org/prop/direct/P131> | <http://www.wikidata.org/prop/direct/P969> | <http://www.wikidata.org/prop/direct/P740> ) ?var2 .
  SERVICE  <http://wikiba.se/ontology#label>   {
-    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en".
-    ?var4  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "zh".
   }
- FILTER (  (  STRSTARTS (  ?var1 , "nm" )  ) 
-) .
 }
-ORDER BY ASC( ?var1 )
-LIMIT 50000
 
-query 7: 
-# dropping a condition, still no results
 
-SELECT ?var1  ?var2  ?var3 
+query 7:
+# replaces the list of alternatives with a single triple pattern asking for headquarters location
+
+SELECT DISTINCT ?var1  ?var1Label  ?var2Label
 WHERE {
-  ?var4  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q6581097> .
-  ?var4  <http://www.wikidata.org/prop/direct/P345>  ?var1 .
-  ?var3  <http://schema.org/about>  ?var4 .
-  ?var3  <http://schema.org/isPartOf>  <https://en.wikipedia.org/> .
+ {
+   ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q4830453> ;
+ <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q148> .
+ }
+  UNION
+ {
+   ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q783794> ;
+ <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q148> .
+ }
+  ?var1  <http://www.wikidata.org/prop/direct/P159>  ?var2 .
  SERVICE  <http://wikiba.se/ontology#label>   {
-    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en".
-    ?var4  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "zh".
   }
- FILTER (  (  STRSTARTS (  ?var1 , "nm" )  ) 
-) .
 }
-ORDER BY ASC( ?var1 )
-LIMIT 50000
 
-query 8: 
-# dropping the condition on males, times out, user gives up
 
-SELECT ?var1  ?var2  ?var3 
+query 8:
+# the last change is undone; changes label service language again
+
+SELECT DISTINCT ?var1  ?var1Label  ?var2Label
 WHERE {
-  ?var4  <http://www.wikidata.org/prop/direct/P31>  ?var5 .
-  ?var4  <http://www.wikidata.org/prop/direct/P345>  ?var1 .
-  ?var3  <http://schema.org/about>  ?var4 .
-  ?var3  <http://schema.org/isPartOf>  <https://en.wikipedia.org/> .
+ {
+   ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q4830453> ;
+ <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q148> .
+ }
+  UNION
+ {
+   ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q783794> ;
+ <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q148> .
+ }
+  ?var1 ( <http://www.wikidata.org/prop/direct/P159> | <http://www.wikidata.org/prop/direct/P131> | <http://www.wikidata.org/prop/direct/P969> | <http://www.wikidata.org/prop/direct/P740> ) ?var2 .
  SERVICE  <http://wikiba.se/ontology#label>   {
-    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en".
-    ?var4  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "zh-cn".
   }
- FILTER (  (  STRSTARTS (  ?var1 , "nm" )  ) 
-) .
 }
-ORDER BY ASC( ?var1 )
-LIMIT 50000
+
+
+query 9:
+# location of admin. entity is removed from alternatives list
+
+SELECT DISTINCT ?var1  ?var1Label  ?var2Label
+WHERE {
+ {
+   ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q4830453> ;
+ <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q148> .
+ }
+  UNION
+ {
+   ?var1 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q783794> ;
+ <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q148> .
+ }
+  ?var1 ( <http://www.wikidata.org/prop/direct/P159> | <http://www.wikidata.org/prop/direct/P969> | <http://www.wikidata.org/prop/direct/P740> ) ?var2 .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "zh-cn".
+  }
+}

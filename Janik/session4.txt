@@ -4,7 +4,7 @@ ID of first query in session: 836323374
 
 number of queries: 4
 
-query evolution description: The user successively removes or adds variables to the output. A triple pattern is added but removed later on. The limits are also modified.
+query evolution description: The user successively modifies the output variables in the select clause. A triple pattern is added but removed later on. The limits are also modified.
 
 user story:
 The user starts by searching for cities and their time of earliest written record.

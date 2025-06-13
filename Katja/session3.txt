@@ -1,245 +1,85 @@
-ID of first query in session: 744194159
+ID of first query in session: 747321618
 
-number of queries: 8
+number of queries: 4
 
 query evolution description:
 
-Information about entites with basketball player as occputation and some information about them.
+The user starts with a query to which an additional condition is added later. The results are also sorted from a certain query onwards and the limit is modified.
 
 
 user story:
-The user starts with a sophisticated query retrieving information about basketball players. Then the query is revised with moving triple patterns from optional to the main part and adding another property to the query (a bit of bugfixing along the way.)
-
+The user starts by searching for instances of cemeteries and requests an image of them, if available
+After that, the limit is increased and it is also required that the cemetery is located in Sweden.
+The user then orders the results first by qualifier of the cemeteries and then according to their label, presumably because this is more suitable for human users.
 
 
 query 1:
-# Getting place of birth, country of citizenship, ethnic group, coordinate location as mandatory (date of birth optional), no results: syntax error
 
-SELECT ?var1  ?var2  ?var3  ?var4  ?var5  ?var6  ?var7  ?var8  ?var9  ?var10 
+SELECT ?var1  ?var2Label  ?var3
 WHERE {
- {
-   ?var1  <http://www.wikidata.org/prop/direct/P106>  <http://www.wikidata.org/entity/Q3665646> .
- }
-  ?var1  <http://www.wikidata.org/prop/direct/P19>  ?var4 .
-  ?var1  <http://www.wikidata.org/prop/direct/P27>  ?var9 .
-  ?var1  <http://www.wikidata.org/prop/direct/P172>  ?var7 .
-  ?var4  <http://www.wikidata.org/prop/direct/P625>  ?var3 .
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q39614> .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "sv".
+    ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  }
  OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P569>  ?var11 .
+  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var3 .
  }
-  BIND (  YEAR (  ?var11  )  AS  ?var6 ).
-  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
- FILTER (  ( (  LANG (  ?var2  )  =  "en" ) ) 
-) .
-  ?var4  <http://www.w3.org/2000/01/rdf-schema#label>  ?var5 .
- FILTER (  ( (  LANG (  ?var5  )  =  "en" ) ) 
-) .
-  ?var9  <http://www.w3.org/2000/01/rdf-schema#label>  ?var10 .
- FILTER (  ( (  LANG (  ?var2  )  =  "en" ) ) 
-) .
-  ?var7  <http://www.w3.org/2000/01/rdf-schema#label>  ?var8 .
- FILTER (  ( (  LANG (  ?var5  )  =  "en" ) ) 
-) .
 }
+LIMIT 100
 
 
 query 2:
-# errer is fixed, result retrieved
+# cemeteries now have to be in Sweden and limit is increased
 
-SELECT ?var1  ?var2  ?var3  ?var4  ?var5  ?var6  ?var7  ?var8  ?var9  ?var10 
+SELECT ?var1  ?var2Label  ?var3
 WHERE {
- {
-   ?var1  <http://www.wikidata.org/prop/direct/P106>  <http://www.wikidata.org/entity/Q3665646> .
- }
-  ?var1  <http://www.wikidata.org/prop/direct/P19>  ?var4 .
-  ?var1  <http://www.wikidata.org/prop/direct/P27>  ?var9 .
-  ?var1  <http://www.wikidata.org/prop/direct/P172>  ?var7 .
-  ?var4  <http://www.wikidata.org/prop/direct/P625>  ?var3 .
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q39614> .
+  ?var1  <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q34> .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "sv".
+    ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  }
  OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P569>  ?var11 .
+  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var3 .
  }
-  BIND (  YEAR (  ?var11  )  AS  ?var6 ).
-  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
- FILTER (  ( (  LANG (  ?var2  )  =  "en" ) ) 
-) .
-  ?var4  <http://www.w3.org/2000/01/rdf-schema#label>  ?var5 .
- FILTER (  ( (  LANG (  ?var5  )  =  "en" ) ) 
-) .
-  ?var9  <http://www.w3.org/2000/01/rdf-schema#label>  ?var10 .
- FILTER (  ( (  LANG (  ?var10  )  =  "en" ) ) 
-) .
-  ?var7  <http://www.w3.org/2000/01/rdf-schema#label>  ?var8 .
- FILTER (  ( (  LANG (  ?var8  )  =  "en" ) ) 
-) .
 }
+LIMIT 1000
 
 
 query 3:
-# date of birth is now mandatory (main part of the query)
+# The results are now sorted in ascending order according to the cemetery's qualifier.
 
-SELECT ?var1  ?var2  ?var3  ?var4  ?var5  ?var6  ?var7  ?var8  ?var9  ?var10 
+SELECT ?var1  ?var2Label  ?var3
 WHERE {
- {
-   ?var1  <http://www.wikidata.org/prop/direct/P106>  <http://www.wikidata.org/entity/Q3665646> .
- }
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q39614> .
+  ?var1  <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q34> .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "sv".
+    ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  }
  OPTIONAL {
-  ?var1  <http://www.wikidata.org/prop/direct/P569>  ?var11 .
-  ?var1  <http://www.wikidata.org/prop/direct/P19>  ?var4 .
-  ?var1  <http://www.wikidata.org/prop/direct/P27>  ?var9 .
-  ?var1  <http://www.wikidata.org/prop/direct/P172>  ?var7 .
-  ?var4  <http://www.wikidata.org/prop/direct/P625>  ?var3 .
+  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var3 .
  }
-  BIND (  YEAR (  ?var11  )  AS  ?var6 ).
-  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
- FILTER (  ( (  LANG (  ?var2  )  =  "en" ) ) 
-) .
-  ?var4  <http://www.w3.org/2000/01/rdf-schema#label>  ?var5 .
- FILTER (  ( (  LANG (  ?var5  )  =  "en" ) ) 
-) .
-  ?var9  <http://www.w3.org/2000/01/rdf-schema#label>  ?var10 .
- FILTER (  ( (  LANG (  ?var10  )  =  "en" ) ) 
-) .
-  ?var7  <http://www.w3.org/2000/01/rdf-schema#label>  ?var8 .
- FILTER (  ( (  LANG (  ?var8  )  =  "en" ) ) 
-) .
 }
+ORDER BY ASC( ?var1 )
+LIMIT 1000
 
 
 query 4:
-# minor adjustments, makeing label mandatory
+# The results are now sorted in ascending order according to the cemetery's name/label. (easier to read for people than using the qualifier to sort)
 
-ID: 743748406
-timestamp: 2017-06-13 18:20:18 +00:00
-SELECT ?var1  ?var2  ?var3  ?var4  ?var5  ?var6  ?var7  ?var8  ?var9  ?var10 
+SELECT ?var1  ?var2Label  ?var3
 WHERE {
- {
-   ?var1  <http://www.wikidata.org/prop/direct/P106>  <http://www.wikidata.org/entity/Q3665646> .
- }
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q39614> .
+  ?var1  <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q34> .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "sv".
+    ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+  }
  OPTIONAL {
-  BIND (  YEAR (  ?var11  )  AS  ?var6 ).
-  ?var1  <http://www.wikidata.org/prop/direct/P569>  ?var11 .
-  ?var1  <http://www.wikidata.org/prop/direct/P19>  ?var4 .
-  ?var1  <http://www.wikidata.org/prop/direct/P27>  ?var9 .
-  ?var1  <http://www.wikidata.org/prop/direct/P172>  ?var7 .
-  ?var4  <http://www.wikidata.org/prop/direct/P625>  ?var3 .
-  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
- FILTER (  ( (  LANG (  ?var2  )  =  "en" ) ) 
-) .
-  ?var4  <http://www.w3.org/2000/01/rdf-schema#label>  ?var5 .
- FILTER (  ( (  LANG (  ?var5  )  =  "en" ) ) 
-) .
-  ?var9  <http://www.w3.org/2000/01/rdf-schema#label>  ?var10 .
- FILTER (  ( (  LANG (  ?var10  )  =  "en" ) ) 
-) .
-  ?var7  <http://www.w3.org/2000/01/rdf-schema#label>  ?var8 .
- FILTER (  ( (  LANG (  ?var8  )  =  "en" ) ) 
-) .
+  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var3 .
  }
 }
-
-
-query 5:
-# variable renaming adding language filters
-
-SELECT ?var1  ?var2  ?var3  ?var4  ?var5  ?var6  ?var7  ?var8  ?var9  ?var10  ?var11 
-WHERE {
- {
-   ?var1  <http://www.wikidata.org/prop/direct/P106>  <http://www.wikidata.org/entity/Q3665646> .
- }
- OPTIONAL {
-  BIND (  YEAR (  ?var12  )  AS  ?var7 ).
-  ?var1  <http://www.wikidata.org/prop/direct/P569>  ?var12 .
-  ?var1  <http://www.wikidata.org/prop/direct/P19>  ?var5 .
-  ?var1  <http://www.wikidata.org/prop/direct/P27>  ?var10 .
-  ?var1  <http://www.wikidata.org/prop/direct/P172>  ?var8 .
-  ?var5  <http://www.wikidata.org/prop/direct/P625>  ?var4 .
-  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
- FILTER (  ( (  LANG (  ?var2  )  =  "en" ) ) 
-) .
-  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var3 .
- FILTER (  ( (  LANG (  ?var3  )  =  "en" ) ) 
-) .
-  ?var5  <http://www.w3.org/2000/01/rdf-schema#label>  ?var6 .
- FILTER (  ( (  LANG (  ?var6  )  =  "en" ) ) 
-) .
-  ?var10  <http://www.w3.org/2000/01/rdf-schema#label>  ?var11 .
- FILTER (  ( (  LANG (  ?var11  )  =  "en" ) ) 
-) .
-  ?var8  <http://www.w3.org/2000/01/rdf-schema#label>  ?var9 .
- FILTER (  ( (  LANG (  ?var9  )  =  "en" ) ) 
-) .
- }
-}
-
-
-
-query 6:
-# adding the same triple pattern again with a different vaiable at object position (???)
-
-
-SELECT ?var1  ?var2  ?var3  ?var4  ?var5  ?var6  ?var7  ?var8  ?var9  ?var10  ?var11  ?var12 
-WHERE {
- {
-   ?var1  <http://www.wikidata.org/prop/direct/P106>  <http://www.wikidata.org/entity/Q3665646> .
- }
- OPTIONAL {
-  BIND (  YEAR (  ?var13  )  AS  ?var8 ).
-  ?var1  <http://www.wikidata.org/prop/direct/P569>  ?var13 .
-  ?var1  <http://www.wikidata.org/prop/direct/P19>  ?var6 .
-  ?var1  <http://www.wikidata.org/prop/direct/P19>  ?var3 .
-  ?var1  <http://www.wikidata.org/prop/direct/P27>  ?var11 .
-  ?var1  <http://www.wikidata.org/prop/direct/P172>  ?var9 .
-  ?var6  <http://www.wikidata.org/prop/direct/P625>  ?var5 .
-  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
- FILTER (  ( (  LANG (  ?var2  )  =  "en" ) ) 
-) .
-  ?var3  <http://www.w3.org/2000/01/rdf-schema#label>  ?var4 .
- FILTER (  ( (  LANG (  ?var4  )  =  "en" ) ) 
-) .
-  ?var6  <http://www.w3.org/2000/01/rdf-schema#label>  ?var7 .
- FILTER (  ( (  LANG (  ?var7  )  =  "en" ) ) 
-) .
-  ?var11  <http://www.w3.org/2000/01/rdf-schema#label>  ?var12 .
- FILTER (  ( (  LANG (  ?var12  )  =  "en" ) ) 
-) .
-  ?var9  <http://www.w3.org/2000/01/rdf-schema#label>  ?var10 .
- FILTER (  ( (  LANG (  ?var10  )  =  "en" ) ) 
-) .
- }
-}
-
-
-query 7: 
-# fixing the mistake and replacing the redundant property with given name
-
-
-SELECT ?var1  ?var2  ?var3  ?var4  ?var5  ?var6  ?var7  ?var8  ?var9  ?var10  ?var11  ?var12 
-WHERE {
- {
-   ?var1  <http://www.wikidata.org/prop/direct/P106>  <http://www.wikidata.org/entity/Q3665646> .
- }
- OPTIONAL {
-  BIND (  YEAR (  ?var13  )  AS  ?var8 ).
-  ?var1  <http://www.wikidata.org/prop/direct/P569>  ?var13 .
-  ?var1  <http://www.wikidata.org/prop/direct/P19>  ?var6 .
-  ?var1  <http://www.wikidata.org/prop/direct/P735>  ?var3 .
-  ?var1  <http://www.wikidata.org/prop/direct/P27>  ?var11 .
-  ?var1  <http://www.wikidata.org/prop/direct/P172>  ?var9 .
-  ?var6  <http://www.wikidata.org/prop/direct/P625>  ?var5 .
-  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
- FILTER (  ( (  LANG (  ?var2  )  =  "en" ) ) 
-) .
-  ?var3  <http://www.w3.org/2000/01/rdf-schema#label>  ?var4 .
- FILTER (  ( (  LANG (  ?var4  )  =  "en" ) ) 
-) .
-  ?var6  <http://www.w3.org/2000/01/rdf-schema#label>  ?var7 .
- FILTER (  ( (  LANG (  ?var7  )  =  "en" ) ) 
-) .
-  ?var11  <http://www.w3.org/2000/01/rdf-schema#label>  ?var12 .
- FILTER (  ( (  LANG (  ?var12  )  =  "en" ) ) 
-) .
-  ?var9  <http://www.w3.org/2000/01/rdf-schema#label>  ?var10 .
- FILTER (  ( (  LANG (  ?var10  )  =  "en" ) ) 
-) .
- }
-}
+ORDER BY ASC( ?var2Label )
+LIMIT 1000

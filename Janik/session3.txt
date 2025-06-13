@@ -4,7 +4,7 @@ ID of first query in session: 423677387
 
 number of queries: 4
 
-query evolution description: The evolution of the query consists of adding further triple patterns, adding and removing limits and changing the output columns.
+query evolution description: The evolution of the query consists of adding/removing further triple patterns, modifying limits and changing the output columns.
 
 user story:
 The user starts by searching for persons educated at Tel Aviv University, their place of birth and if available any image of this person. The user also requests coordinate locations of any entity.
