@@ -1,0 +1,13 @@
+SELECT ?var1Label ( COUNT (* ) AS  ?var2  )
+WHERE {
+  ?var3 ( <http://www.wikidata.org/prop/direct/P31> / <http://www.wikidata.org/prop/direct/P279> *) <http://www.wikidata.org/entity/Q36774> .
+  ?var4  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q5> .
+  ?var3  <http://www.wikidata.org/prop/direct/P169>  ?var4 .
+  ?var4  <http://www.wikidata.org/prop/direct/P69>  ?var1 .
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en".
+  }
+}
+GROUP BY  ?var1Label 
+ORDER BY  DESC( ?var2 )
+LIMIT 100

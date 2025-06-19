@@ -1,0 +1,10 @@
+SELECT ?var1  ?var2 
+WHERE {
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  ?var3 .
+  ?var3  <http://www.wikidata.org/prop/direct/P279> * <http://www.wikidata.org/entity/Q43229> .
+  ?var1  <http://www.wikidata.org/prop/direct/P17>  <http://www.wikidata.org/entity/Q224> .
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
+ FILTER (  ( (  LANG (  ?var2  )  =  "hr" ) ) 
+) .
+}
+ORDER BY ASC( ?var2 )

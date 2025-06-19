@@ -1,0 +1,28 @@
+SELECT ?var1  ?var1Label  ?var2  ?var3  ?var4  ?var5  ?var6  ?var7 
+WHERE {
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q5> ;
+ <http://www.wikidata.org/prop/direct/P570>  ?var4 .
+  ?var1  <http://www.wikidata.org/prop/direct/P2949>  ?var8 .
+  ?var1  <http://www.wikidata.org/prop/direct/P1902>  ?var9 .
+ FILTER (  ( (  ?var4  >=  (  NOW (  ) - "P12M"^^<http://www.w3.org/2001/XMLSchema#duration>  )  ) ) 
+) .
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P569>  ?var3 .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var10 .
+ }
+ OPTIONAL {
+  ?var1 ( <http://www.wikidata.org/prop/direct/P20> / <http://www.wikidata.org/prop/direct/P625> ) ?var5 .
+ }
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P535>  ?var11 .
+ }
+  BIND (  IRI (  CONCAT (  "string1", ?var8  )  )  AS  ?var6 ).
+  BIND (  IRI (  CONCAT (  "string2", ?var11  )  )  AS  ?var7 ).
+  BIND (  IRI (  CONCAT (  "string3", ?var9  )  )  AS  ?var12 ).
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en".
+  }
+}
+ORDER BY  DESC( ?var4 )

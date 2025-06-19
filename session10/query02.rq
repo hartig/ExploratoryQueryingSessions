@@ -1,0 +1,23 @@
+SELECT ?var1  ?var2 ( COUNT ( DISTINCT  ?var3  ) AS  ?var4  )
+WHERE {
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q622512> .
+  ?var1  <http://www.wikidata.org/prop/direct/P569>  ?var5 .
+  ?var3  <http://schema.org/about>  ?var1 .
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var6 .
+ }
+ OPTIONAL {
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
+ FILTER (  ( (  LANG (  ?var2  )  =  "es" ) ) 
+) .
+ }
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q2095> .
+ FILTER (  ( (  ?var5  >=  "1970-01-01T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>  ) ) 
+) .
+ FILTER (  ( !( BOUND (  ?var6  ) ) ) 
+) .
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q622512> .
+}
+GROUP BY  ?var1  ?var2 
+ORDER BY  DESC( ?var4 )
+LIMIT 50
