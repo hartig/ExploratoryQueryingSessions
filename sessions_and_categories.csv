@@ -1,4 +1,8 @@
 session, chunk, first query ID, number of queries, category 1, category 2, category 3, category 4, category 5, category 6, category 7
-session01, chunk_07.log,622979812,5,x,x,,,,x,
-session02, chunk_07.log,640903854,7,,,x,,,,
-session03, chunk_07.log,623213766,4,,,,,,x,
+session01,chunk_07.log,622979812,5,x,x,,,,x,
+session02,chunk_07.log,640903854,7,,,x,,,,
+session03,chunk_07.log,623213766,4,,,,,,x,
+session04,chunk_08.log,409098207,7,,,,x,,,
+session05,chunk_08.log,459438448,6,x,,x,,,,
+session06,chunk_08.log,696877294,4,x,,,x,,,
+session07,chunk_08.log,705613812,4,x,x,,,,,
