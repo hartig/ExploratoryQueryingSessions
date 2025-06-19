@@ -1,0 +1,17 @@
+SELECT ?var1  ?var2 
+WHERE {
+  ?var1  <http://www.wikidata.org/prop/direct/P279>  <http://www.wikidata.org/entity/Q2095> .
+ OPTIONAL {
+  ?var1  <http://www.wikidata.org/prop/direct/P18>  ?var3 .
+ }
+ OPTIONAL {
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
+ FILTER (  ( (  LANG (  ?var2  )  =  "es" ) ) 
+) .
+ }
+ FILTER (  ( !( BOUND (  ?var3  ) ) ) 
+) .
+}
+GROUP BY  ?var1  ?var2 
+ORDER BY  DESC( ?var2 )
+LIMIT 50

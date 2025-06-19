@@ -1,0 +1,30 @@
+SELECT ?var1 ( COUNT ( DISTINCT  ?var2  ) AS  ?var3  )
+WHERE {
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q5> .
+ {
+   ?var1  <http://www.wikidata.org/prop/direct/P19>  <http://www.wikidata.org/entity/Q36> .
+ }
+  UNION
+ {
+   ?var1  <http://www.wikidata.org/prop/direct/P19>  ?var4 .
+   ?var4  <http://www.wikidata.org/prop/direct/P131> * <http://www.wikidata.org/entity/Q36> .
+ }
+  ?var1  <http://www.wikidata.org/prop/direct/P569>  ?var5 .
+ FILTER (  ( (  YEAR (  ?var5  )  > "1900"^^<http://www.w3.org/2001/XMLSchema#integer>  ) ) 
+) .
+ FILTER (  ( (  YEAR (  ?var5  )  > "1910"^^<http://www.w3.org/2001/XMLSchema#integer>  ) ) 
+) .
+ OPTIONAL {
+  ?var2  <http://schema.org/about>  ?var1 .
+  ?var2  <http://schema.org/inLanguage>  ?var6 .
+ }
+ FILTER (  (  NOT EXISTS  {
+   ?var7  <http://schema.org/about>  ?var1 .
+   ?var7  <http://schema.org/inLanguage>  "pl".
+ }
+ ) 
+) .
+}
+GROUP BY  ?var1 
+ORDER BY  DESC( ?var3 )
+LIMIT 10
