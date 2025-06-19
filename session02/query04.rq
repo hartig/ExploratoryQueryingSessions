@@ -1,0 +1,26 @@
+SELECT DISTINCT(  SAMPLE ( COALESCE (  ?var1Label , ?var2Label  )  ) AS  ?var3  ) ?var4 (  GROUP_CONCAT (  DISTINCT  ?var5Label ; SEPARATOR =  ", " )  AS  ?var6  )
+WHERE {
+  ?var4  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q341> .
+ OPTIONAL {
+  ?var4  <http://www.w3.org/2000/01/rdf-schema#label>  ?var1Label .
+ FILTER (  ( (  LANG (  ?var1Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var4  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2Label .
+ }
+ OPTIONAL {
+  ?var4  <http://www.wikidata.org/prop/direct/P306>  ?var6 .
+  ?var6  <http://www.w3.org/2000/01/rdf-schema#label>  ?var5Label .
+ FILTER (  ( (  LANG (  ?var5Label  )  =  "en" ) ) 
+) .
+ }
+ OPTIONAL {
+  ?var4  <http://www.wikidata.org/prop/direct/P275>  ?var7 .
+ }
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,en".
+  }
+}
+GROUP BY  ?var4 
+ORDER BY ASC( ?var3 )

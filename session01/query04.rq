@@ -1,5 +1,3 @@
-# Same as the previous query but now with the number of the LIMIT clause increases to 1 million.
-
 SELECT ?var1 
 WHERE {
   ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q5> .

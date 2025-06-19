@@ -1,7 +1,3 @@
-# All things that are instance of human and, optionally, English-language labels for them.
-# The labels are not actually projected, which makes it somewhat useless to request them at all.
-# The predicate URI for "instance of" has the wrong namespace, due to which the query result is empty.
-
 SELECT ?var1 
 WHERE {
   ?var1  <http://www.wikidata.org/entity/P31>  <http://www.wikidata.org/entity/Q5> .
