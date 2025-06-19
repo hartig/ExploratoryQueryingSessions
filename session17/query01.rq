@@ -1,0 +1,7 @@
+SELECT ?var1  ?var2Label  ?var3
+WHERE {
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q515> .
+  ?var1  <http://www.wikidata.org/prop/direct/P1249>  ?var3 .
+}
+ORDER BY ASC( ?var3 )
+LIMIT 100
