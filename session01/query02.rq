@@ -1,0 +1,11 @@
+# The same query as before but now with the correct predicate URI.
+
+SELECT ?var1 
+WHERE {
+  ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q5> .
+ OPTIONAL {
+  ?var1  <http://www.w3.org/2000/01/rdf-schema#label>  ?var2 .
+ FILTER (  ( (  LANG (  ?var2  )  =  "en" ) ) 
+) .
+ }
+}
