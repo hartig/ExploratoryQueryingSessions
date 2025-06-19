@@ -1,12 +1,16 @@
 # session01
 **Extracted from chunk:** chunk_07.log
+
 **ID of first query in session:** 622979812
+
 **number of queries:** 5
 
 **query evolution description:**
+
 The query is essentially the same throughout the session, but with minor modifications. While the first version has a wrong predicate URI, the second version fixes this issue. The third version then adds a LIMIT clause with a value of 100k. In the fourth version, the value of the LIMIT clause is increased to 1M, and then reduced to 500k in the fifth version.
 
 **user story:**
+
 The user wanted to retrieve the URIs of things that are of type human.
 Initially, they used the wrong predicate URI for "instance of" (wrong namespace).
 After fixing this issue in the second query, the user added a LIMIT clause in the third query. The time between issuing the second and issuing the third query is almost 5 mins. It can be assumed that either the second query (i.e., the one without LIMIT) timed out or, after waiting for a couple of minutes, the user became impatient and terminated the query. In any case, issuing the query again, but now with a LIMIT clause, means the user didn't want to give up and, instead, check whether the LIMIT would help to reduce the query execution time and to retrieve at least some instances of type human.
