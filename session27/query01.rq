@@ -1,0 +1,14 @@
+SELECT ?var1 (  SAMPLE ( ?var1Label  ) AS  ?var2  )(  GROUP_CONCAT (  DISTINCT  ?var3Label ; SEPARATOR =  ", " )  AS  ?var4  )
+WHERE {
+ SELECT ?var1  ?var1Label  ?var3 
+ WHERE  {
+   ?var1  <http://www.wikidata.org/prop/direct/P170>  <http://www.wikidata.org/entity/Q762> .
+  OPTIONAL {
+   ?var1  <http://www.wikidata.org/prop/direct/P186>  ?var3 .
+  }
+  SERVICE  <http://wikiba.se/ontology#label>    {
+     <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en,it,fr,de,es".
+   }
+ }
+}
+GROUP BY  ?var1 
