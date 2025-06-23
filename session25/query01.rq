@@ -1,0 +1,15 @@
+SELECT ?var1  ?var1Label  ?var2  ?var3  ?var3Label 
+WHERE {
+ {
+  SELECT ?var1 ( COUNT ( ?var4  ) AS  ?var2  )(  SAMPLE ( ?var4  ) AS  ?var3  )
+  WHERE   {
+    ?var4  <http://www.wikidata.org/prop/direct/P138>  ?var1 .
+    ?var1  <http://www.wikidata.org/prop/direct/P31>  <http://www.wikidata.org/entity/Q5> .
+  }
+  GROUP BY  ?var1 
+ }
+ SERVICE  <http://wikiba.se/ontology#label>   {
+    <http://www.bigdata.com/rdf#serviceParam>  <http://wikiba.se/ontology#language>  "en".
+  }
+}
+ORDER BY  DESC( ?var2 )
