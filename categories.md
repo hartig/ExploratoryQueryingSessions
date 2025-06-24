@@ -1,5 +1,7 @@
 # Categorization of the Sessions
-By an initial analysis and comparison of the sessions in this collection, we observe that these sessions---and, thus, exploratory querying behavior in general---can be grouped into different categories. In particular, we identify the following six categories based on our collection of sessions. We emphasize that these categories are not mutually exclusive; some sessions fit into multiple categories. We also emphasize that these categories are not necessarily exhaustive; there may be more categories, which are not evident from the sessions in our collection.
+By an initial analysis and comparison of the sessions in our collection, we have observed that these sessions can be grouped into different categories. In particular, we have identified six categories, as detailed below. We emphasize that these categories are not mutually exclusive; some sessions fit into multiple categories. We also emphasize that these categories are not necessarily exhaustive; there may be more categories that are not evident from the sessions in our collection.
+
+In the following, we describe each of the six categories and list the sessions of each of them. For a more software-friendly representation of this categorization of the sessions, refer to the [sessions_and_categories.csv](https://github.com/hartig/ExploratoryQueryingSessions/blob/main/sessions_and_categories.csv) file.
 
 ## Category 1 - Result Refinement
 During sessions within this category, the user modifies their query to limit the answers (rows) of the query result more and more. Typical query modifications in such sessions include the addition of further conditions, captured via FILTER expressions or via filtering triple patterns.
