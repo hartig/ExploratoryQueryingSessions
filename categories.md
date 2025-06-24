@@ -1,5 +1,13 @@
 # Categorization of the Sessions
-By an initial analysis and comparison of the sessions in our collection, we have observed that these sessions can be grouped into different categories. In particular, we have identified six categories, as detailed below. We emphasize that these categories are not mutually exclusive; some sessions fit into multiple categories. We also emphasize that these categories are not necessarily exhaustive; there may be more categories that are not evident from the sessions in our collection.
+By an initial analysis and comparison of the sessions in our collection, we have observed that these sessions can be grouped into different categories. In particular, we have identified six categories:
+* [Category 1 - Result Refinement](#category-1---result-refinement)
+* [Category 2 - Result Generalization](#category-2---result-generalization)
+* [Category 3 - Result Extension](#category-3---result-extension)
+* [Category 4 - Query Refinement](#category-4---query-refinement)
+* [Category 5 - Bug Fixing](#category-5---bug-fixing)
+* [Category 6 - Shifting Query Intent](#category-6---shifting-query-intent)
+
+We emphasize that these categories are not mutually exclusive; some sessions fit into multiple categories. We also emphasize that these categories are not necessarily exhaustive; there may be more categories that are not evident from the sessions in our collection.
 
 In the following, we describe each of the six categories and list the sessions of each of them. For a more software-friendly representation of this categorization of the sessions, refer to the [sessions_and_categories.csv](https://github.com/hartig/ExploratoryQueryingSessions/blob/main/sessions_and_categories.csv) file.
 
