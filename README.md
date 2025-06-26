@@ -1,5 +1,5 @@
 # Exploratory Querying Sessions
-This repository contains a small collection of 30 exploratory querying sessions discovered in Wikidata query logs.
+This repository contains a small **collection of 30 exploratory querying sessions** discovered in [query logs](https://iccl.inf.tu-dresden.de/web/Wikidata_SPARQL_Logs/en) of the [Wikidata SPARQL Query Service](https://query.wikidata.org/).
 
 The term _exploratory querying_ refers to an activity in which a human user issues database queries with the goal of producing a query that captures a particular query intent. Notice that this is different from data exploration which focuses more on achieving an understanding of the content of a database or dataset rather than on developing a query to express a particular query intent.
 
@@ -27,5 +27,24 @@ By an initial analysis and comparison of the sessions in our collection, we have
 We emphasize that these categories are not mutually exclusive; some sessions fit into multiple categories. We also emphasize that these categories are not necessarily exhaustive; there may be more categories that are not evident from the sessions in our collection.
 
 ## Method
+To create the collection of sessions we have applied the following method.
 
-**TODO** complete this section of the readme ..
+#### Logs Used
+We used a subset of the [Wikidata SPARQL Logs](https://iccl.inf.tu-dresden.de/web/Wikidata_SPARQL_Logs/en) which contain SPARQL queries that have been issued to the [Wikidata SPARQL Query Service](https://query.wikidata.org/) during the period of ten months, from June 2017 to March 2018. The particular subset that we used is the set of so-called organic queries which is assumed to be "dominated by queries that indicate an immediate information need of many users" [[1]](#Ref1).
+
+<div id="Ref1">[1] Stanislav Malyshev, Markus Krötzsch, Larry González, Julius Gonsior, Adrian Bielefeldt: <em>Getting the Most out of Wikidata: Semantic Technology Usage in Wikipedia's Knowledge Graph.</em> In Proceedings of the 17th International Semantic Web Conference (ISWC), 2018. https://doi.org/10.1007/978-3-030-00668-6_23</div>
+
+#### Streak Extraction
+Since the logs have been anonymized and contain no information based on which it would be possible to reconstruct user sessions (sequences of queries issued by the same user), we adapted Bonifati et al.'s concept of a  streak, "which intuitively captures a sequence of similar queries within close distance of each other" [[2]](#Ref2). We extracted such streaks automatically by using the method of Bonifati et al. with three additional constraints: i)&nbsp;subsequent queries within a streak must not be identical, ii)&nbsp;the timestamps for subsequent queries need to be at least 3 seconds apart, and iii)&nbsp;the timestamps for subsequent queries need to be at most 5 minutes apart. From the original log files, consisting of a total of 3.57M organic queries, this resulted in 24.050 streaks
+
+<div id="Ref2">[2] Angela Bonifati, Wim Martens, Thomas Timm: <em>An Analytical Study of Large SPARQL Query Logs.</em> The VLDB Journal 29, 2020. https://doi.org/10.1007/s00778-019-00558-9</div>
+
+#### Chunking
+To distribute the work of inspecting the extracted streaks, we split the file of streaks into multiple chunks. The resulting chunks can be found in the [chunks](https://github.com/hartig/ExploratoryQueryingSessions/tree/main/chunks) directory.
+
+#### Manual Inspection
+Each of us was assigned one of the chunks and, then, _manually_ inspected the streaks within that chunk, trying to find streaks for which it is likely that they have been (fragments of) sessions of a single user, respectively, who has performed some form of exploratory querying activity. As part of this process, to understand the purpose of the queries and why they might have evolved in the way that they did throughout their session, we (re)issued the queries at the [Wikidata Query Service](https://query.wikidata.org/) and consulted the Web pages for the URIs used in the queries.
+
+For each exploratory querying session that we found, we formulated a hypothesis of what the user did and tried to achieve during the session (the aforementioned user stories), and we added a brief descriptions of how the query evolves throughout the session.
+
+As this manual inspection was a time-consuming process, we decided that each of us does not need to find more than 3-4 such sessions. Therefore, each of us ended up looking only at a small part of their respective chunk of streaks, and it is quite likely that the 30 sessions in our collection are just a small fraction of exploratory querying sessions that can be found in the Wikidata SPARQL Logs.
