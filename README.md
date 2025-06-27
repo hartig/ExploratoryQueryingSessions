@@ -5,6 +5,8 @@ The term _exploratory querying_ refers to an activity in which a human user issu
 
 Our primary goal when creating this collection was to test the hypothesis that the Wikidata query logs contain sessions that exhibit exploratory querying behavior. In this sense, we did not attempt to be as exhaustive as possible, and neither did we attempt to be 100% accurate about the completeness of the sessions that we identified (i.e., the sessions in this repository may contain only a subset of the queries that the original sessions consisted of). Nonetheless, we are making available the collection because it may be a useful starting point for further research.
 
+This work is licensed under the [Creative Commons Attribution 4.0 International License][cc-by].
+
 ## Organization of the Repository
 The sessions are organized in separate sub-directories (one per session) within the [sessions](https://github.com/hartig/ExploratoryQueryingSessions/tree/main/sessions) directory. Within such a sub-directory, we are providing each of the queries of the corresponding session as a separate file, where the file names reflect the order of the queries within the session. While these queries are from 2017, most of them can still be run successfully at the [Wikidata Query Service](https://query.wikidata.org/).
 
@@ -48,3 +50,10 @@ Each of us was assigned one of the chunks and, then, _manually_ inspected the st
 For each exploratory querying session that we found, we formulated a hypothesis of what the user did and tried to achieve during the session (the aforementioned user stories), and we added a brief descriptions of how the query evolves throughout the session.
 
 As this manual inspection was a time-consuming process, we decided that each of us does not need to find more than 3-4 such sessions. Therefore, each of us ended up looking only at a small part of their respective chunk of streaks, and it is quite likely that the 30 sessions in our collection are just a small fraction of exploratory querying sessions that can be found in the Wikidata SPARQL Logs.
+
+-------
+[![CC BY 4.0][cc-by-image]][cc-by]
+
+[cc-by]: http://creativecommons.org/licenses/by/4.0/
+[cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
+[cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
