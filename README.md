@@ -3,7 +3,7 @@ This repository contains a small **collection of 30 exploratory querying session
 
 The term _exploratory querying_ refers to an activity in which a human user issues database queries with the goal of producing a query that captures a particular query intent. Notice that this is different from data exploration which focuses more on achieving an understanding of the content of a database or dataset rather than on developing a query to express a particular query intent.
 
-Our primary goal when creating this collection was to test the hypothesis that the Wikidata query logs contain sessions that exhibit exploratory querying behavior. In this sense, we did not attempt to be as exhaustive as possible, and neither did we attempt to be 100% accurate about the completeness of the sessions that we identified (i.e., the sessions in this repository may contain only a subset of the queries that the original sessions consisted of). Nonetheless, we are making available the collection because it may be a useful starting point for further research.
+Our primary goal when creating this collection was to test the hypothesis that the Wikidata query logs contain sessions that exhibit exploratory querying behavior. In this sense, the colletion might not be exhaustive, and some if the sessions indentified might be incomplete (i.e., the sessions in this repository may contain only a subset of the queries that the original sessions consisted of). Nonetheless, we believe that this collection is useful starting point for further research and we hope to facilitate this by making it available.
 
 This work is licensed under the [Creative Commons Attribution 4.0 International License][cc-by].
 
