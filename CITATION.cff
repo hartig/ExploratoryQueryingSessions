@@ -7,7 +7,18 @@ message: >-
   If you use this dataset, please cite it using the metadata
   from this file.
 type: dataset
-authors:
+preferred-citation:
+  type: article
+  title: "Exploring Exploratory Querying"
+  journal: "Proceedings of the VLDB Endowment"
+  volume: 18
+  issue: 13
+  year: 2025
+  start: 5731
+  end: 5739
+  doi: 10.14778/3773731.3773746
+  url: https://www.vldb.org/pvldb/vol18/p5731-konstantinidis.pdf
+  authors:
   - given-names: Marcelo
     family-names: Arenas
     affiliation: Universidad Católica de Chile
@@ -47,11 +58,5 @@ authors:
   - given-names: Hsiang-Yun
     family-names: Wu
     affiliation: St. Pölten UAS
-identifiers:
-  - type: doi
-    value: 10.14778/3773731.3773746
-  - type: url
-    value: >-
-      https://www.vldb.org/pvldb/vol18/p5731-konstantinidis.pdf
 repository-code: 'https://github.com/hartig/ExploratoryQueryingSessions'
 license: CC-BY-4.0
