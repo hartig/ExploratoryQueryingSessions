@@ -3,9 +3,11 @@ This repository contains a small **collection of 30 exploratory querying session
 
 The term _exploratory querying_ refers to an activity in which a human user issues database queries with the goal of producing a query that captures a particular query intent. Notice that this is different from data exploration which focuses more on achieving an understanding of the content of a database or dataset rather than on developing a query to express a particular query intent.
 
-Our primary goal when creating this collection was to test the hypothesis that the Wikidata query logs contain sessions that exhibit exploratory querying behavior. In this sense, the colletion might not be exhaustive, and some if the sessions indentified might be incomplete (i.e., the sessions in this repository may contain only a subset of the queries that the original sessions consisted of). Nonetheless, we believe that this collection is useful starting point for further research and we hope to facilitate this by making it available.
+Our primary goal when creating this collection was to test the hypothesis that the Wikidata query logs contain sessions that exhibit exploratory querying behavior. In this sense, the collection might not be exhaustive, and some of the sessions identified might be incomplete (i.e., the sessions in this repository may contain only a subset of the queries that the original sessions consisted of). Nonetheless, we believe that this collection is a useful starting point for further research and we hope to facilitate this by making it available.
 
-This work is licensed under the [Creative Commons Attribution 4.0 International License][cc-by].
+This work is licensed under the [Creative Commons Attribution 4.0 International License][cc-by] and related to the following peer-reviewed research publication:
+
+Marcelo Arenas, Enrico Franconi, Janik Hammerer, Olaf Hartig, Katja Hose, Laura Koesten, George Konstantinidis, Leonid Libkin, Wim Martens, Yuya Sasaki, Stefanie Scherzinger, Katherine Thornton, and Hsiang-Yun Wu: **Exploring Exploratory Querying.** In Proceedings of the VLDB Endowment 18(13), pages 5731-5739, 2025. ([download](https://www.vldb.org/pvldb/vol18/p5731-konstantinidis.pdf))
 
 ## Organization of the Repository
 The sessions are organized in separate sub-directories (one per session) within the [sessions](https://github.com/hartig/ExploratoryQueryingSessions/tree/main/sessions) directory. Within such a sub-directory, we are providing each of the queries of the corresponding session as a separate file, where the file names reflect the order of the queries within the session. While these queries are from 2017, most of them can still be run successfully at the [Wikidata Query Service](https://query.wikidata.org/).
