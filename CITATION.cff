@@ -1,0 +1,57 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Exploratory Querying Sessions
+message: >-
+  If you use this dataset, please cite it using the metadata
+  from this file.
+type: dataset
+authors:
+  - given-names: Marcelo
+    family-names: Arenas
+    affiliation: Universidad Católica de Chile
+  - given-names: Enrico
+    family-names: Franconi
+    affiliation: Free University of Bozen-Bolzano
+  - given-names: Janik
+    family-names: Hammerer
+    affiliation: University of Bayreuth
+  - given-names: Olaf
+    family-names: Hartig
+    affiliation: Linköping University
+  - given-names: Katja
+    family-names: Hose
+    affiliation: TU Wien
+  - given-names: Laura
+    family-names: Koesten
+    affiliation: University of Vienna
+  - given-names: George
+    family-names: Konstantinidis
+    affiliation: University of Southampton
+  - given-names: Leonid
+    family-names: Libkin
+    affiliation: University of Edinburgh
+  - given-names: Wim
+    family-names: Martens
+    affiliation: University of Bayreuth
+  - given-names: Yuya
+    family-names: Sasaki
+    affiliation: University of Osaka
+  - given-names: Stefanie
+    family-names: Scherzinger
+    affiliation: University of Passau
+  - given-names: Katherine
+    family-names: Thornton
+    affiliation: Yale University Library
+  - given-names: Hsiang-Yun
+    family-names: Wu
+    affiliation: St. Pölten UAS
+identifiers:
+  - type: doi
+    value: 10.14778/3773731.3773746
+  - type: url
+    value: >-
+      https://www.vldb.org/pvldb/vol18/p5731-konstantinidis.pdf
+repository-code: 'https://github.com/hartig/ExploratoryQueryingSessions'
+license: CC-BY-4.0
